@@ -55,12 +55,14 @@
                 "price": 300,
                 "portrait": "MarcelNikolic.jpg"
             }
+
         ]
         // et bien retourner le tableau photographers seulement une fois
         return ({
-            photographers: [...photographers]})
-        
+            photographers: [...photographers]});        
     }
+
+    
 
     async function displayData(photographers) {
         const photographersSection = document.querySelector(".photographer_section");
