@@ -8,7 +8,6 @@
 
 body {
     font-family: "DM Sans", sans-serif;
-    margin: 0;
 }
 
 
@@ -48,7 +47,8 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
-    font-size: 3.3rem;
+    font-size: 2.8rem;
+    line-height: normal;
     font-weight: 500;
     text-align: center;
     padding-top: 1rem;

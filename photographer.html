@@ -8,29 +8,72 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+        <div id="photograph-description">
+          <header>
+            <h1>Mimi Keel</h1>
+          </header>
+
+          <div class="description">
+            <p class="location">London, UK</p>
+            <p class="citation">Voir le beau dans le quotidien</p>
+          </div>
+
+        </div>
+
+        <div id="button">
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+
+        <div class="profil">
+          <img src="/assets/photographers/ID_Photos/MimiKeel.jpg" alt="" />
+        </div>
+
       </div>
     </main>
+    
+    <!-- Modal -->
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				
+        <header>
+          <div id="header-form">
+            <h1>Contactez-moi</h1>
+            <h1 id="modal-profil">Mimi Keel</h1>
+          </div>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
         </header>
-				<form>
+				
+        <form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input class="text-control" type="text" id="first" name="First name" minlength="2" required/>
+						
+            <label>Nom</label>
+						<input class="text-control" type="text" id="last" name="Last name" minlength="2" required/>
+
+						<label>Email</label>
+						<input class="text-control" type="email" id="email" name="Email" required/>
+
+						<label>Votre message</label>
+						<input class="text-control" type="text" id="message" name="Your message" required/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" name="Send">Envoyer</button>
 				</form>
+
 			</div>
 		</div>
+
+    <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
