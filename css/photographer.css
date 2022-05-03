@@ -14,7 +14,7 @@ body {
 .photograph-header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    height: 300px;
+    height: 250px;
     margin: 0 100px;
     padding: 0 2.5rem;
     background-color: #FAFAFA;
@@ -96,6 +96,31 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.media {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
+    /* gap: 193px;*/
+    margin: 100px;
+}
+
+.media .column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.media img {
+    width: 23rem;
+    height: 23rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.media .info {
+    margin: 10px 0 35px 0;
+    font-size: 20px;
+    color: #901C1C;;
 }
 
 
