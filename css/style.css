@@ -12,7 +12,6 @@ body {
     height: 100%;
 }
 
-
 header {
     display: flex;
     flex-direction: row;
@@ -21,22 +20,22 @@ header {
     height: 90px;
 }
 
-h1 {
-    color: #901C1C;
-    margin-right: 100px;
-    font-weight: 500;
-}
-
 .logo {
     height: 50px;
     margin-left: 100px;
+}
+
+header h1 {
+    color: #901C1C;
+    margin-right: 100px;
+    font-weight: 500;
 }
 
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 70px;
-    margin-top: 100px;
+    margin: 100px 0 50px 0;
 }
 
 .photographer_section article {
@@ -80,4 +79,37 @@ h1 {
 .photographer_section article #price {
     font-size: .9rem;
     color: #525252;
+}
+
+@media screen and (max-width: 757px) {
+    .logo {
+        margin-left: 20px;
+    }
+
+    header h1 {
+        margin: 0;
+        text-align: center;
+        line-height: 1;
+    }
+
+    .photographer_section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+
+@media screen and (max-width: 496px) {
+    header {
+        flex-direction: column;
+    }
+
+    .logo, header h1{
+        text-align: center;
+        margin: 10px 0;
+    }
+    .photographer_section {
+        grid-template-columns: 1fr;
+    }
+
 }
