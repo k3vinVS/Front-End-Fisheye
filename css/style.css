@@ -42,9 +42,13 @@ h1 {
 .photographer_section article {
     justify-self: center;
     display: flex;
-    justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.photographer_section article .profil {
+    text-align: center;
+    text-decoration: none;
 }
 
 .photographer_section article h2 {

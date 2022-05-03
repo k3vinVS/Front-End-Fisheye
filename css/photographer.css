@@ -82,20 +82,27 @@ body {
     object-fit: cover;
 }
 
-.price {
-    width: 20rem;
-    height: 3rem;
-    margin-right: 2rem;
-    padding: 1rem;
-    font-weight: bold;
-    background-color: #DB8876;
-    border-radius: 5px 5px 0 0;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+nav {
+  margin: 10px 100px;
+  width: 11rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav > ul {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    text-align: center;
+    list-style-type: none;
+    font-size: 14px;
+    color: white;
+    background-color: #901C1C;
+    padding: .7rem;
+    border-radius: 5px;
+}
+
+nav > ul > li {
+    display: none;
 }
 
 .media {
@@ -123,6 +130,21 @@ body {
     color: #901C1C;;
 }
 
+.price {
+    width: 20rem;
+    height: 3rem;
+    margin-right: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 
 
