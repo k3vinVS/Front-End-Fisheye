@@ -42,11 +42,18 @@
 
       <div class="liste">
         <nav>
-          Trier par
+          <p>Trier par</p>
+
           <ul> 
-            Popularité
-            <li><a href="#">Date</a></li>
-            <li><a href="#">Titre</a></li>
+            <li class="menu-deroulant">
+              <a href="#">Popularité</a>
+
+              <ul class="sous-menu">
+                <li><a href="#">Date</a></li>
+                <li><a href="#">Titre</a></li>
+              </ul>
+              
+            </li>
           </ul>
         </nav>
       </div>
@@ -122,16 +129,20 @@
         <form>
 					<div>
 						<label>Prénom</label>
-						<input class="text-control" type="text" id="first" name="First name" minlength="2" required/>
+						<input class="text-control" type="text" id="first" name="First name" 
+            minlength="2" required/>
 						
             <label>Nom</label>
-						<input class="text-control" type="text" id="last" name="Last name" minlength="2" required/>
+						<input class="text-control" type="text" id="last" name="Last name" 
+            minlength="2" required/>
 
 						<label>Email</label>
-						<input class="text-control" type="email" id="email" name="Email" required/>
+						<input class="text-control" type="email" id="email" name="Email" 
+            required/>
 
 						<label>Votre message</label>
-						<input class="text-control" type="text" id="message" name="Your message" required/>
+						<input class="text-control" type="text" id="message"
+            name="Your message" required/>
 					</div>
           <button class="contact_button" name="Send">Envoyer</button>
 				</form>

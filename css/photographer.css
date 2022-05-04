@@ -82,9 +82,12 @@ body {
     object-fit: cover;
 }
 
+
+/* MENU DEROULANT */
+
 nav {
   margin: 10px 100px;
-  width: 11rem;
+  width: 15rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -93,17 +96,98 @@ nav {
 nav > ul {
     display: flex;
     text-align: center;
-    list-style-type: none;
+    height: 3rem;
+    width: 8rem;
     font-size: 14px;
-    color: white;
     background-color: #901C1C;
-    padding: .7rem;
+    /* padding: .7rem; */
     border-radius: 5px;
 }
 
-nav > ul > li {
-    display: none;
+nav ul {
+    list-style-type: none;
 }
+
+nav > ul > li {
+    position: relative;
+    height: 100%;
+    flex: 1;
+}
+
+
+nav > ul > li > a {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-deroulant > a:after {
+    content: ">";
+    transform: rotate(90deg);
+    font-size: 14px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.sous-menu {
+    margin-top: 2.6rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.sous-menu > li {
+    border-bottom-style: 1px solid white;
+}
+
+.sous-menu > li > a {
+    height: 3rem;
+    padding-left: 20px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.menu-deroulant:hover > a:after {
+    animation: rotationFleche 0.2s linear forwards;
+}
+
+.menu-deroulant:hover > .sous-menu {
+    animation: apparitionSousMenu 1s forwards;
+}
+
+@keyframes rotationFleche {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes apparitionSousMenu {
+    0% {
+        /* border-top: 1px solid white; */
+        background-color: #901C1C;
+    }
+    100% {
+        max-height: 25rem;
+        /* border-top: 1px solid white; */
+        background-color: #901C1C;
+    }
+}
+
+
+/* PHOTOGRAPHER MEDIA */
 
 .media {
     /* display: grid;

@@ -10,9 +10,9 @@ function photographerFactory(data) {
         <img src="${picture}" />
         <h2>${name}</h2>
         </a>
-        <span id="location">${city}, ${country}</span>
-        <span id="tagline">${tagline}</span>
-        <span id="price">${price}€/jour</span>
+        <p id="location">${city}, ${country}</p>
+        <p id="tagline">${tagline}</p>
+        <p id="price">${price}€/jour</p>
         </article>
         `;
         return articleHtml;
