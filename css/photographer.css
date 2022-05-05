@@ -1,11 +1,58 @@
-#contact_modal {
-    display: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: "DM Sans", sans-serif;
+}
+
+
+/* HEADER MAIN*/
+
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 250px;
     margin: 0 100px;
+    padding: 0 2.5rem;
+    background-color: #FAFAFA;
+}
+
+.photograph-header #photograph-description {
+    margin-top: 2.6rem;
+}
+
+.photograph-header h1 {
+    color: #D3573C;
+    font-size: 3.2rem;
+    font-weight: 500;
+    margin: 0;
+    padding: .1rem;
+    line-height: .9;
+}
+
+.photograph-header .location {
+    color: #901C1C;
+    font-size: 20px;
+}
+
+.photograph-header .citation {
+    font-size: .9rem;
+    margin-top: 1rem;
+    color: #525252;
+}
+
+.photograph-header #button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.photograph-header #button :hover {
+    background-color: #DB8876;
+    color: inherit;
 }
 
 .contact_button {
@@ -21,6 +68,184 @@
     cursor: pointer;
 }
 
+.photograph-header .profil {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.photograph-header .profil img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+/* MENU DEROULANT */
+
+nav {
+  margin: 10px 100px;
+  width: 15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav > ul {
+    display: flex;
+    text-align: center;
+    height: 3rem;
+    width: 8rem;
+    font-size: 14px;
+    background-color: #901C1C;
+    border-radius: 5px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav > ul > li {
+    position: relative;
+    height: 100%;
+    flex: 1;
+}
+
+
+nav > ul > li > a {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+}
+
+.menu-deroulant > a:after {
+    content: ">";
+    transform: rotate(90deg);
+    font-size: 14px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.sous-menu {
+    margin-top: 2.75rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.topline {
+    width: 7rem;
+    height: 2px;
+    margin: 0 .5rem;
+    border-top: 1px solid white;
+}
+
+.sous-menu > li > a {
+    height: 2.5rem;
+    padding-left: 18px;
+    width: 100%;
+    align-items: center;
+    display: flex;
+}
+
+.menu-deroulant:hover > a:after {
+    animation: rotationFleche 0.2s linear forwards;
+}
+
+.menu-deroulant:hover > .sous-menu {
+    animation: apparitionSousMenu 1s forwards;
+}
+
+@keyframes rotationFleche {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes apparitionSousMenu {
+    0% {
+        background-color: #901C1C;
+    }
+    100% {
+        max-height: 25rem;
+        background-color: #901C1C;
+    }
+}
+
+
+/* PHOTOGRAPHER MEDIA */
+
+.media {
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr; */
+    /* gap: 193px;*/
+    margin: 100px;
+}
+
+.media .column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.media img {
+    width: 23rem;
+    height: 23rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.media .info {
+    margin: 10px 0 35px 0;
+    font-size: 20px;
+    color: #901C1C;;
+}
+
+.price {
+    width: 20rem;
+    height: 3rem;
+    margin-right: 2rem;
+    padding: 1rem;
+    font-weight: bold;
+    background-color: #DB8876;
+    border-radius: 5px 5px 0 0;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+
+
+/* MODAL */
+
+#contact_modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.04);
+    position: relative;
+    top: -43vh;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -29,23 +254,30 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    padding: 10px 35px;
     margin: auto;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: 100%;
 }
 
 .modal header img {
     cursor: pointer;
+    align-self: flex-start;
+    padding-top: 1.5rem;
 }
 
-.modal header h2 {
-    font-size: 64px;
+.modal header h1 {
+    color: inherit;
+    font-size: 59px;
     font-weight: normal;
-    text-align: center;
+}
+
+.modal header #modal-profil {
+    margin-bottom: 1.5rem;
 }
 
 form {
@@ -73,4 +305,8 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+form #message {
+    height: 170px;
 }

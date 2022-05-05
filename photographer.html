@@ -8,29 +8,160 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+      </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+
+        <div id="photograph-description">
+          <header>
+            <h1>Mimi Keel</h1>
+          </header>
+
+          <div class="description">
+            <p class="location">London, UK</p>
+            <p class="citation">Voir le beau dans le quotidien</p>
+          </div>
+
+        </div>
+
+        <div id="button">
+          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        </div>
+
+        <div class="profil">
+          <img src="/assets/photographers/ID_Photos/MimiKeel.jpg" alt="" />
+        </div>
+
       </div>
+
+
+
+      <!-- Menu déroulant -->
+
+      <div class="liste">
+        <nav>
+          <p>Trier par</p>
+
+          <ul> 
+            <li class="menu-deroulant">
+              <a href="#">Popularité</a>
+
+              <ul class="sous-menu">
+                <li>
+                  <div class="topline"></div>
+                  <a href="#">Date</a>
+                </li>
+
+                <li>
+                  <div class="topline"></div>
+                  <a href="#">Titre</a>
+                </li>
+              </ul>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="media">
+        <div class="column">
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Animals_Rainbow.jpg" alt="">
+            <p class="info">Arc-en-cie</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Travel_Lonesome.jpg" alt="">
+            <p class="info">Solitude</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Event_SeasideWedding.jpg" alt="">
+            <p class="info">Mariage à la mer</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Portrait_Background.jpg" alt="">
+            <p class="info">Potrait #1</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Event_PintoWedding.jpg" alt="">
+            <p class="info">Wedding #1</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Portrait_Wednesday.jpg" alt="">
+            <p class="info">Little miss</p>
+          </div>
+        </div>
+
+        <div class="column">
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Event_BenevidesWedding.jpg" alt="">
+            <p class="info">Wedding #2</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Portrait_Nora.jpg" alt="">
+            <p class="info">Portrait #2</p>
+          </div>
+          <div>
+            <img src="/assets/images/Sample Photos/Mimi/Travel_HillsideColor.jpg" alt="">
+            <p class="info">Holiday</p>
+          </div>
+        </div>
+
+        <div>
+          <img src="/assets/images/Sample Photos/Mimi/Animals_Wild_Horses_in_the_mountains.mp4" alt="">
+          <p class="info">In the mountains</p>
+        </div>
+      </div>
+
     </main>
+
+    <div class="price">300€/jour</div>
+    
+    <!-- Modal -->
     <div id="contact_modal">
 			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+				
+        <header>
+          <div id="header-form">
+            <h1>Contactez-moi</h1>
+            <h1 id="modal-profil">Mimi Keel</h1>
+          </div>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
         </header>
-				<form>
+				
+        <form>
 					<div>
 						<label>Prénom</label>
-						<input />
+						<input class="text-control" type="text" id="first" name="First name" 
+            minlength="2" required/>
+						
+            <label>Nom</label>
+						<input class="text-control" type="text" id="last" name="Last name" 
+            minlength="2" required/>
+
+						<label>Email</label>
+						<input class="text-control" type="email" id="email" name="Email" 
+            required/>
+
+						<label>Votre message</label>
+						<input class="text-control" type="text" id="message"
+            name="Your message" required/>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" name="Send">Envoyer</button>
 				</form>
+
 			</div>
 		</div>
+
+    <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
