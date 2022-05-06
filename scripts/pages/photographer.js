@@ -1,36 +1,27 @@
-function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
+// function photographerFactory(data) {
+//     const { name, portrait, city, country, tagline, price } = data;
 
-    const picture = `assets/photographers/ID_Photos/${portrait}`;
+//     const picture = `assets/photographers/ID_Photos/${portrait}`;
 
-    function getUserCardDOM() {
-        const article = document.createElement('article');
-        const lien = document.createElement ( 'a' );
-
-        const img = document.createElement('img');
-        img.setAttribute("src", picture);
-
-        const h2 = document.createElement('h2');
-        h2.textContent = name;
-
-        const spanLocation = document.createElement ( 'span' );
-        spanLocation.textContent = `${city}, ${country}`;
-        spanLocation.setAttribute('id', 'location');
-        
-        const spanTagline = document.createElement ( 'span' );
-        spanTagline.textContent = tagline;
-        spanTagline.setAttribute('id', 'tagline');
-        
-        const spanPrice = document.createElement ( 'span' );
-        spanPrice.textContent = `${price}€/jour`;
-        spanPrice.setAttribute('id', 'price');
-
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(spanLocation);
-        article.appendChild(spanTagline);
-        article.appendChild(spanPrice);
-        return (article);
-    }
-    return { name, picture, city, country, tagline, price, getUserCardDOM }
-};
+//     function getUserBannerDOM() {
+//         let userBanner = `<div class="photograph-header">
+//         <div id="photograph-description">
+//           <header>
+//             <h1>${name}</h1>
+//           </header>
+//           <div class="description">
+//             <p class="location">${city}, ${country}</p>
+//             <p class="citation">${tagline}</p>
+//           </div>
+//         </div>
+//         <div id="button">
+//           <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+//         </div>
+//         <div class="profil">
+//           <img src="${picture}" alt="" />
+//         </div>
+//       </div>`;
+//       return userBanner;
+//     }
+//     return { name, picture, city, country, tagline, price, getUserBannerDOM }
+// };
