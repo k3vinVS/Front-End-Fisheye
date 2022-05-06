@@ -224,6 +224,7 @@ li a {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 
 .media img {
@@ -379,9 +380,9 @@ form #message {
     }
 }
 
-/* @media screen and (min-width: px) and (max-width: 968px) {
+@media screen and (min-width: 1225px) {
     .media img {
-        width: 19rem;
-        height: 19rem;
+        width: 20rem;
+        height: 20rem;
     }
-}  */
+} 
