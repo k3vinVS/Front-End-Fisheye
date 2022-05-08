@@ -49,7 +49,7 @@
 
       <!-- Menu déroulant -->
 
-      <div class="liste">
+      <div class="liste" aria-label="Main navigation" role="listbox">
         <nav>
           <p>Trier par</p>
 
@@ -74,12 +74,24 @@
         </nav>
       </div>
 
+      <!-- <div class="menu-deroulant">
+
+        <label for="order-by">Trier par</label>
+        <select name="order-by" id="order-by">
+          <option value="">Popularité</option>
+          <option value="date">Date</option>
+          <option value="titre">Titre</option>
+        </select>
+
+      </div> -->
+
+
 
 
 
       <!-- PHOTOGRAPH MEDIA -->
 
-      <div class="media">
+      <section class="media">
 
           <div class="media-picture">
             <img src="./assets/images/Sample Photos/Mimi/Animals_Rainbow.jpg" alt="">
@@ -125,7 +137,7 @@
           </div>
         
 
-      </div>
+      </section>
 
     </main>
 
@@ -143,23 +155,24 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
         </header>
 				
-        <form>
+        <form method="get" action="" aria-labelledby="${id}">
 					<div>
-						<label>Prénom</label>
+						<label for="first">Prénom</label>
 						<input class="text-control" type="text" id="first" name="First name" 
             minlength="2" required/>
 						
-            <label>Nom</label>
+            <label for="last">Nom</label>
 						<input class="text-control" type="text" id="last" name="Last name" 
             minlength="2" required/>
 
-						<label>Email</label>
+						<label for="email">Email</label>
 						<input class="text-control" type="email" id="email" name="Email" 
             required/>
 
-						<label>Votre message</label>
+						<label for="message">Votre message</label>
 						<input class="text-control" type="text" id="message"
-            name="Your message" required/>
+            name="Your message" size="3" rows="3" required/>
+            <!-- <textarea name="Your message" id="message" cols="36" rows="3" required></textarea> -->
 					</div>
           <button class="contact_button" name="Send">Envoyer</button>
 				</form>

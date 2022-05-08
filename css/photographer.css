@@ -204,6 +204,37 @@ li a {
     }
 }
 
+/* .menu-deroulant {
+    margin: 10px 100px;
+}
+
+
+.menu-deroulant label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.menu-deroulant select {
+    height: 3rem;
+    width: 8rem;
+    font-size: .9rem;
+    color: white;
+    background-color: #901C1C;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+
+.menu-deroulant select:focus {
+    outline: none;
+}
+
+#order-by option {
+    height: 1rem;
+    border-top: 1px solid white;
+} */
+
+
 
 
 
@@ -267,22 +298,22 @@ li a {
 #contact_modal {
     display: none;
     background-color: rgba(0, 0, 0, 0.04);
-    position: relative;
-    top: -43vh;
+    position: absolute;
+    top: 5rem;
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: 1;
 }
 
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 35px;
+    padding: 32px 35px;
     margin: auto;
 }
 
@@ -292,16 +323,17 @@ li a {
     height: 100%;
 }
 
-.modal header img {
+.modal img {
     cursor: pointer;
     align-self: flex-start;
     padding-top: 1.5rem;
+    width: 2.5rem;
 }
 
-.modal header h1 {
+#header-form h1 {
     color: inherit;
-    font-size: 59px;
-    font-weight: normal;
+    font-size: 4rem;
+    margin-bottom: 1rem;
 }
 
 .modal header #modal-profil {
@@ -318,6 +350,8 @@ form {
 form label {
     color: #312E2E;
     font-size: 36px;
+    margin-top: .5rem
+    ;
 }
 
 form div {
@@ -331,17 +365,77 @@ form div {
 form input {
     width: 100%;
     height: 68px;
+    font-size: 1.5rem;
     border: none;
     border-radius: 5px;
+}
+
+form input:focus {
+    outline: 1px solid green;
 }
 
 form #message {
     height: 170px;
 }
 
+/* form textarea {
+        border-radius: 5px;
+} */
+
 
 
 /* MEDIA QUERIES */
+
+@media screen and (max-width: 540px) {
+    .modal {
+        width: 90%;
+        padding: 32px 10px;
+    }
+
+    .modal header {
+        flex-direction: row;
+    }
+
+    #header-form {
+        width: 100%;
+    }
+
+    #header-form h1 {
+        font-size: 2rem;
+        text-align: left;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .modal header img {
+    cursor: pointer;
+    align-self: flex-start;
+    padding-top: .3rem;
+    width: 1.5rem;
+    }
+
+    form label {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 541px) and (max-width: 768px) {
+    .modal {
+        width: 70%;
+        padding-bottom: 2rem;
+    }
+
+    #header-form h1 {
+        font-size: 2.3rem;
+        text-align: left;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .modal header img {
+        padding-top: .9rem;
+        width: 1.5rem;
+    }
+}
+
 
 @media screen and (max-width: 767px) {
     .photograph-header, #photograph-description, .profil {
@@ -376,11 +470,32 @@ form #message {
 
     .price {
         margin-right: 0;
-        width: 75%;
+        width: 15rem;
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .modal {
+        width: 70%;
+        padding-bottom: 2rem;
+    }
+
+    #header-form h1 {
+        font-size: 2.8rem;
+        margin: 0 0 0.6rem 0;
+        line-height: 1;
+    }
+
+    .modal header img {
+        padding-top: .6rem;
     }
 }
 
 @media screen and (min-width: 1225px) {
+    .modal {
+        width: 50%;
+        padding-bottom: 2rem;
+    }
     .media img {
         width: 20rem;
         height: 20rem;
