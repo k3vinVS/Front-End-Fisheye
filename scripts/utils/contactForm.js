@@ -19,18 +19,20 @@ function closeModal() {
 }
 
 
-// Valide d'une couleur verte les inputs du formulaire
+// Enlève les bordures des inputs valide
 function validInput(input) {
 	input.style.border = 'none';
 }
 
 
-// Invalide d'une couleur rouge les inputs du formulaire
+// Invalide d'une bordure rouge les inputs du formulaire
 function invalidInput(input) {
 	input.style.border = '2px solid red';
 }
 
+// ---------------------------Modal Form -------------------------------
 
+// Modal firstName Input ---------------------
 
 // Ecoute de l'input du prénom
 inputFirstName.addEventListener('input', function () {
@@ -58,6 +60,8 @@ const validFirstName = function (acceptFirstName) {
 };
 
 
+// Modal lastName Input -----------------------
+
 // Ecoute de l'input du nom
 inputLastName.addEventListener('input', function () {
 	validLastName(this);
@@ -83,6 +87,8 @@ const validLastName = function (acceptLastName) {
 };
 
 
+// Modal Email Input -------------------------------
+
 // Ecoute de l'input de l'adresse email
 inputEmail.addEventListener('change', function () {
 	validEmail(this);
@@ -107,6 +113,8 @@ const validEmail = function (acceptEmail) {
 };
 
 
+// Modal Message Input -------------------------------
+
 inputMessage.addEventListener('input', function () {
 	validMessage(this);
 });
@@ -125,6 +133,9 @@ const validMessage = function (acceptMessage) {
 	}
 }
 
+
+// Valid Form --------------------------------------
+
 form.addEventListener('submit', function () {
 
 	// Vérifie que les inputs sont remplis et valide
@@ -135,7 +146,7 @@ form.addEventListener('submit', function () {
 		validMessage(inputMessage)
 	) {
 		return true;
-		
+
 	} else {	
 		return false;
 	}
