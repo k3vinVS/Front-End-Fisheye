@@ -247,7 +247,7 @@ li a {
     margin: 60px 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 1rem;
 }
 
@@ -524,7 +524,7 @@ form #message {
         padding-bottom: 2rem;
     }
     .media img {
-        width: 20rem;
-        height: 20rem;
+        width: 23rem;
+        height: 23rem;
     }
 } 

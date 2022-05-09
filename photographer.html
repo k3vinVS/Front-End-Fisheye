@@ -49,23 +49,24 @@
 
       <!-- Menu déroulant -->
 
-      <div class="liste" aria-label="Main navigation" role="listbox">
-        <nav>
+      <div class="liste">
+        <nav aria-label="Main navigation">
           <p>Trier par</p>
 
-          <ul> 
+          <ul role="button" aria-label="Main navigation"> 
             <li class="menu-deroulant">
-              <a href="#">Popularité</a>
+              <a href="#" role="buttonItem" aria-haspopup="listbox" 
+              aria-expanded="false">Popularité</a>
 
-              <ul class="sous-menu">
-                <li>
+              <ul class="sous-menu" role="listbox">
+                <li role="none">
                   <div class="topline"></div>
-                  <a href="#">Date</a>
+                  <a href="#" aria-haspopup="listbox" tabindex="-1">Date</a>
                 </li>
 
-                <li>
+                <li role="none">
                   <div class="topline"></div>
-                  <a href="#">Titre</a>
+                  <a href="#" aria-haspopup="listbox" tabindex="-1">Titre</a>
                 </li>
               </ul>
 
