@@ -251,6 +251,10 @@ li a {
     gap: 1rem;
 }
 
+.media-photograph {
+    text-decoration: none;
+}
+
 .media .media-picture {
     display: flex;
     flex-direction: column;
