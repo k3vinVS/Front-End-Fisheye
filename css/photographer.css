@@ -312,7 +312,7 @@ li a {
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 70%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -327,6 +327,12 @@ li a {
     height: 100%;
 }
 
+.modal button {
+    border: none;
+    background: none;
+    align-self: flex-start;
+}
+
 .modal img {
     cursor: pointer;
     align-self: flex-start;
@@ -338,6 +344,7 @@ li a {
     color: inherit;
     font-size: 4rem;
     margin-bottom: 1rem;
+    line-height: 1;
 }
 
 .modal header #modal-profil {
@@ -482,22 +489,32 @@ form #message {
         margin-right: 0;
         width: 15rem;
     }
+
+    #header-form h1 {
+        margin: 0 0 0.6rem 0;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1023px) {
     .modal {
-        width: 70%;
+        width: 60%;
         padding-bottom: 2rem;
     }
 
     #header-form h1 {
         font-size: 2.8rem;
         margin: 0 0 0.6rem 0;
-        line-height: 1;
     }
 
     .modal header img {
         padding-top: .6rem;
+    }
+}
+
+@media screen and (min-width: 1023px) and (max-width: 1333px) {
+    #header-form h1 {
+        font-size: 2.8rem;
+        margin: 0 0 0.6rem 0;
     }
 }
 

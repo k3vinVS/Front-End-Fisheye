@@ -146,10 +146,7 @@
                 <p class="info-like"><i class="fa fa-solid fa-heart"></i></p>
               </div>
             </div>
-          </a>
-          
-        
-
+          </a>  
       </section>
 
     </main>
@@ -170,34 +167,38 @@
             <h1>Contactez-moi</h1>
             <h1 id="modal-profil">Mimi Keel</h1>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact form"/>
+          <button aria-label="Close Contact form" id="close">
+            <img src="assets/icons/close.svg" onclick="closeModal()"
+            alt="Close Contact form"/>
+          </button>
         </header>
 				
         <form method="get" action="" aria-labelledby="${id}">
 					<div>
 						<label for="first">Prénom</label>
 						<input class="text-control" type="text" id="first" name="First name" 
-            minlength="2" required/>
+            minlength="2" aria-label="First name" required/>
             <small></small>
 						
             <label for="last">Nom</label>
 						<input class="text-control" type="text" id="last" name="Last name" 
-            minlength="2" required/>
+            minlength="2" aria-label="Last name" required/>
             <small></small>
 
 						<label for="email">Email</label>
 						<input class="text-control" type="email" id="email" name="Email" 
-            required/>
+            aria-label="Email" required/>
             <small></small>
 
 						<label for="message">Votre message</label>
 						<input class="text-control" type="text" id="message"
-            name="Your message" size="3" rows="3" required/>
+            name="Your message" size="3" rows="3" aria-label="Your message" required/>
             <small></small>
             <!-- <textarea name="Your message" id="message" cols="36" rows="3" required></textarea> -->
 					</div>
 
-          <button type="submit" class="contact_button" name="Send">Envoyer</button>
+          <button type="submit" class="contact_button" name="Send" 
+          aria-label="Send">Envoyer</button>
 				</form>
 
 			</div>
