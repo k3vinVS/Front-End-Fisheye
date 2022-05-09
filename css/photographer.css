@@ -370,8 +370,14 @@ form input {
     border-radius: 5px;
 }
 
+form small {
+    color: red;
+	font-size: 16px;
+	font-weight: 300;
+}
+
 form input:focus {
-    outline: 1px solid green;
+    outline: none;
 }
 
 form #message {
