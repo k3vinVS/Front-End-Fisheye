@@ -327,11 +327,12 @@ li a {
     height: 100%;
 }
 
-.modal button {
+.modal #close {
     border: none;
     background: none;
     align-self: flex-start;
 }
+
 
 .modal img {
     cursor: pointer;
