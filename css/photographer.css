@@ -74,14 +74,14 @@ body {
     cursor: pointer;
 }
 
-.photograph-header .profil {
+.photograph-header .profil-photographers {
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
 
 
-.photograph-header .profil img {
+.profil-photographers img {
     height: 200px;
     width: 200px;
     padding: .5rem;
@@ -456,7 +456,7 @@ form #message {
 
 
 @media screen and (max-width: 767px) {
-    .photograph-header, #photograph-description, .profil {
+    .photograph-header, #photograph-description, .profil-photographers {
         margin: 1rem;
         display: flex;
         flex-direction: column;

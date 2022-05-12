@@ -1,4 +1,4 @@
-   async function getPhotographers() {
+    async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
         const {photographers} = await getPhotographDatas();
         console.log(photographers);

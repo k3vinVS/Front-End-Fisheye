@@ -34,7 +34,6 @@ header h1 {
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 70px;
     margin: 100px 0 50px 0;
 }
 
@@ -43,11 +42,14 @@ header h1 {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 2rem;
 }
 
 .photographer_section article .profil {
     text-align: center;
     text-decoration: none;
+    align-items: center;
+    margin: .5rem;
 }
 
 .photographer_section article h2 {
@@ -81,6 +83,11 @@ header h1 {
     color: #525252;
 }
 
+
+
+
+/* MEDIA QUERIES */
+
 @media screen and (max-width: 757px) {
     .logo {
         margin-left: 20px;
@@ -112,4 +119,12 @@ header h1 {
         grid-template-columns: 1fr;
     }
 
+}
+
+@media screen and (min-width: 497px) and (max-width: 767px) {
+    
+    
+    .photographer_section article h2 {
+        font-size: 1.8rem;
+    }
 }
