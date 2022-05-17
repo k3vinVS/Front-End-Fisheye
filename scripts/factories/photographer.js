@@ -1,12 +1,15 @@
+
+
 function photographerFactory(data) {
     const { id, name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/ID_Photos/${portrait}`;
+    console.log(picture);
 
     function getUserCardDOM() {
         let articleHtml = `
         <article>
-        <a href="photographer.html?id=${id}" class="profil">
+        <a href="photographer.html?id=${id}&name=${name}" class="profil">
         <img src="${picture}" />
         <h2>${name}</h2>
         </a>

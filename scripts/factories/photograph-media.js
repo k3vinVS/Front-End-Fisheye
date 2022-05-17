@@ -1,25 +1,24 @@
-function photographerMediaFactory(data)  {
-    const { id, photographerId, title, image, likes, date, price } = data;
+function photographerMediaFactory(data, name) {
+    // const usersInfo = data.filter((md) => md.photographerId == userId);
+    // console.log(usersInfo);
 
-    const picture = `assets/images/Sample_Photos/${image}`;
-    const photographers = [data.photographerId];
-    console.log(photographers);
-            
-        function getUserMediaDOM() {
-            let articleHtml = 
-            `
-            <a href="#" class="media-photograph">
+    const { id, photographerId, title, image, video, likes, date, price } = data;
+    
+    const mediaPicture = `assets/images/Sample_Photos/${name}/${image}`;
+
+    function getUserMediaDOM() {
+        let articleHtml = `
+            <a href="photographer.html?id=${photographerId}" class="media-photograph">
                 <div class="media-picture">
-                    <img src="${picture}" alt="${title}">
-                        <div class="info">
-                            <p class="info-title">${title}</p>
-                            <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
-                        </div>
+                <img src="${mediaPicture}" alt="oiseau">
+                    <div class="info">
+                        <p class="info-title">${title}</p>
+                        <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
+                    </div>
                 </div>
-            </a>
-            
+            </a>            
             `;
             return articleHtml;
-        }
-        return { id, photographerId, title, image, likes, date, price, getUserMediaDOM };
+    }
+    return { id, photographerId, title, image, video, likes, date, price, getUserMediaDOM };
 };
