@@ -8,7 +8,7 @@ function photographerFactory(data) {
         let articleHtml = `
         <article>
         <a href="photographer.html?id=${id}&name=${name}" class="profil">
-        <img src="${picture}" />
+        <img src="${picture}" alt="photo de profil"/>
         <h2>${name}</h2>
         </a>
         <p id="location">${city}, ${country}</p>

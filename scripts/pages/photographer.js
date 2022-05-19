@@ -5,33 +5,51 @@ const userName = new URLSearchParams(queryString).get('name');
 // console.log(userName);
 
 
-async function displayDataBannerProfil() {
-    const photographerBannerModel = photographerBannerFactory();
-    const userBannerDOM = photographerBannerModel.getUserBannerDOM();
-    photographerBanner.innerHTML += (userBannerDOM);
+// PHOTOGRAPHERS BANNER PROFIL
+
+async function displayDataBannerProfil(photographers) {    
+    const photographerBanner = document.querySelector(".photograph-header");
+
+    photographers.forEach((photographer) => {
+        const photographerBannerModel = photographerBannerFactory(photographer);
+        const userBannerDOM = photographerBannerModel.getUserBannerDOM();
+        photographerBanner.innerHTML += (userBannerDOM);
+    });
 }
 
-async function displayData(media, name) {
-    const photographerBanner = document.querySelector(".photograph-header");
-    const photographersMedia = document.querySelector(".media");
-    console.log(photographersMedia);
+async function init() {
+    // Récupère les datas des photographes
+    async function getPhotographers() {
+        const {photographers} = await getPhotographDatas();
+        return ({
+            photographers: [...photographers]});
+        };
+    const { photographers } = await getPhotographers();
+    displayDataBannerProfil(photographers);
+};
 
+init();
+
+
+// PHOTOGRAPHERS MEDIA
+
+async function displayData(media, name) {
+    const photographersMedia = document.querySelector(".media");
+    
     
     media.forEach((data) => {
-            const photographerMediaModel = photographerMediaFactory(data, name);
-            const userMediaDOM = photographerMediaModel.getUserMediaDOM();
-            photographersMedia.innerHTML += (userMediaDOM);
+        const photographerMediaModel = photographerMediaFactory(data, name);
+        const userMediaDOM = photographerMediaModel.getUserMediaDOM();
+        photographersMedia.innerHTML += (userMediaDOM);
     });
 };
 
 
 async function initMedia() {
     // Récupère les datas des photographes
-    const { media } = await getPhotographDatas();
+    const { media, photographers } = await getPhotographDatas();
     const usersInfo = media.filter((md) => md.photographerId == userId);
     displayData(usersInfo, userName);
-    displayDataBannerProfil();
-
 };
 
 initMedia();

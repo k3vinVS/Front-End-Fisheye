@@ -1,12 +1,12 @@
-    async function getPhotographers() {
-        // Penser à remplacer par les données récupérées dans le json
-        const {photographers} = await getPhotographDatas();
-        console.log(photographers);
+    // async function getPhotographers() {
+    //     // Penser à remplacer par les données récupérées dans le json
+    //     const {photographers} = await getPhotographDatas();
+    //     console.log(photographers);
         
-        // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers]});        
-    };
+    //     // et bien retourner le tableau photographers seulement une fois
+    //     return ({
+    //         photographers: [...photographers]});        
+    // };
 
     
 
@@ -23,6 +23,11 @@
     
     async function init() {
         // Récupère les datas des photographes
+        async function getPhotographers() {
+            const {photographers} = await getPhotographDatas();
+            return ({
+                photographers: [...photographers]});
+            };
         const { photographers } = await getPhotographers();
         displayData(photographers);
     };
