@@ -100,6 +100,12 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 10;
+    overflow: auto;
+    animation: lightboxIn .5s;
+}
+
+.lightbox .fa-xmark:before {
+    content: "\f00d";
 }
 
 .lightbox__next,
@@ -126,14 +132,21 @@ body {
 }
 
 .lightbox__close {
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     border: none;
-    background: center center / 15px 28px no-repeat;
+    background: center center / 100% 100% no-repeat transparent;
+    position: fixed;
     color: white;
     top: 20px;
-    right: 20px;
+    right: 10px;
+    z-index: 12;
 }
+
+.lightbox .fa {
+    font-size: 18px;
+}
+
 
 .lightbox button {
     opacity: .5;
@@ -146,11 +159,31 @@ body {
 }
 
 .lightbox__container img {
-    width: 600px;
-    height: 600px;
+    max-width: 100%;
+    height: auto;
+    animation: lightboxIn .5s;
 }
 
+.lightbox__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    min-height: 100vh;
+}
 
+.lightbox__loader {
+    width: 38px;
+    height: 38px;
+    opacity: .5;
+    background: url(assets/icons/loader.svg) center center no-repeat;
+}
+
+@keyframes lightboxIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 
 
 
@@ -321,6 +354,7 @@ li a {
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 1rem;
+    overflow: hidden;
 }
 
 .media img {
@@ -330,12 +364,35 @@ li a {
     object-fit: cover;
 }
 
-.media .info {
+.media video {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.media-picture .info {
     display: flex;
     justify-content: space-between;
     padding-top: .3rem;
-    font-size: 20px;
-    color: #901C1C;;
+    font-size: 1rem;
+    color: #901C1C;
+    overflow: hidden;
+}
+
+.info .info-title {
+    /* width: 177px; */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info .info-like {
+    /* width: 50px; */
+}
+
+.info .info-like .fa {
+    margin-left: 5px;
 }
 
 .price {
@@ -547,6 +604,11 @@ form #message {
         height: 14rem;
     }
 
+    .media video {
+        width: 14rem;
+        height: 14rem;
+    }
+
     .price {
         margin-right: 0;
         width: 15rem;
@@ -585,7 +647,13 @@ form #message {
         width: 50%;
         padding-bottom: 2rem;
     }
+
     .media img {
+        width: 23rem;
+        height: 23rem;
+    }
+
+    .media video {
         width: 23rem;
         height: 23rem;
     }

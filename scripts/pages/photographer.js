@@ -5,9 +5,17 @@ const userName = new URLSearchParams(queryString).get('name');
 // console.log(userName);
 
 
+async function displayDataBannerProfil() {
+    const photographerBannerModel = photographerBannerFactory();
+    const userBannerDOM = photographerBannerModel.getUserBannerDOM();
+    photographerBanner.innerHTML += (userBannerDOM);
+}
 
 async function displayData(media, name) {
+    const photographerBanner = document.querySelector(".photograph-header");
     const photographersMedia = document.querySelector(".media");
+    console.log(photographersMedia);
+
     
     media.forEach((data) => {
             const photographerMediaModel = photographerMediaFactory(data, name);
@@ -22,6 +30,7 @@ async function initMedia() {
     const { media } = await getPhotographDatas();
     const usersInfo = media.filter((md) => md.photographerId == userId);
     displayData(usersInfo, userName);
+    displayDataBannerProfil();
 
 };
 
