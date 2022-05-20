@@ -5,19 +5,25 @@ const userName = new URLSearchParams(queryString).get('name');
 // console.log(userName);
 
 
+
+
+
+
 // PHOTOGRAPHERS BANNER PROFIL
 
 async function displayDataBannerProfil(photographers) {    
     const photographerBanner = document.querySelector(".photograph-header");
+    
+    for (photographer of photographers) {
+        // const photographerBannerModel = photographerBannerFactory(photographer);
+        // const userBannerDOM = photographerBannerModel.getUserBannerDOM();
+        // photographerBanner.innerHTML = (userBannerDOM);
+        photographerBanner.innerHTML = photographerBannerFactory(photographer)
+        .getUserBannerDOM();
+    };
+};
 
-    photographers.forEach((photographer) => {
-        const photographerBannerModel = photographerBannerFactory(photographer);
-        const userBannerDOM = photographerBannerModel.getUserBannerDOM();
-        photographerBanner.innerHTML += (userBannerDOM);
-    });
-}
-
-async function init() {
+async function initBanner() {
     // Récupère les datas des photographes
     async function getPhotographers() {
         const {photographers} = await getPhotographDatas();
@@ -28,7 +34,10 @@ async function init() {
     displayDataBannerProfil(photographers);
 };
 
-init();
+initBanner();
+
+
+
 
 
 // PHOTOGRAPHERS MEDIA
@@ -38,16 +47,18 @@ async function displayData(media, name) {
     
     
     media.forEach((data) => {
-        const photographerMediaModel = photographerMediaFactory(data, name);
-        const userMediaDOM = photographerMediaModel.getUserMediaDOM();
-        photographersMedia.innerHTML += (userMediaDOM);
+        // const photographerMediaModel = photographerMediaFactory(data, name);
+        // const userMediaDOM = photographerMediaModel.getUserMediaDOM();
+        // photographersMedia.innerHTML += (userMediaDOM);
+        photographersMedia.innerHTML += photographerMediaFactory(data, name)
+        .getUserMediaDOM();
     });
 };
 
 
 async function initMedia() {
     // Récupère les datas des photographes
-    const { media, photographers } = await getPhotographDatas();
+    const { media } = await getPhotographDatas();
     const usersInfo = media.filter((md) => md.photographerId == userId);
     displayData(usersInfo, userName);
 };
@@ -55,31 +66,27 @@ async function initMedia() {
 initMedia();
 
 
-// async function getBannerPhotographers() {
-//     const { photographers } = await getPhotographDatas();    
-//         console.log( photographers );
-
-//         return ({
-//             photographers: [...photographers]});    
-// };
 
 
-// async function displayData(photographers) {
-//     const photographersBanner = document.querySelector(".photograph-header");    
-        
-//     photographers.forEach((photographer) => {
-//             const photographerBannerModel = photographerBannerFactory(photographer);    
-//             const userBannerDOM = photographerBannerModel.getUserBannerDOM();
-//             photographersBanner.innerHTML = (userBannerDOM);
-//         });
-//     };
+// PRICE BANNER
+
+async function displayPriceBanner(media) {
+    const photographersPriceBanner = document.querySelector(".price");
+
+    for(data of media) {
+    // const photographerPriceBannerModel = photographerPriceBannerFactory(data);
+    // const userPriceBannerDOM = photographerPriceBannerModel.getUserPriceBannerDOM();
+    // photographersPriceBanner.innerHTML = (userPriceBannerDOM);
+    photographersPriceBanner.innerHTML = photographerPriceBannerFactory(data)
+    .getUserPriceBannerDOM();
+    };
+};
 
 
-// async function initBanner() {
-//     // Récupère les datas des photographes    
-//     const { photographers } = await getBannerPhotographers();
-//     displayData(photographers);
-// };
+async function initPriceBanner() {
+    // Récupère les datas des photographes
+    const { media } = await getPhotographDatas();
+    displayPriceBanner(media);
+};
 
-// initBanner();
-
+initPriceBanner();
