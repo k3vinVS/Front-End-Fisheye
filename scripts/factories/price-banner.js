@@ -6,7 +6,7 @@ function photographerPriceBannerFactory(data) {
         
         let priceBannerHtml = `
         <p>${likes}<i class="fa fa-solid fa-heart"></i></p>
-        <p>${price}€/jour</p>            
+        <p>${price}€ / jour</p>            
         `;
         return priceBannerHtml;
     }  

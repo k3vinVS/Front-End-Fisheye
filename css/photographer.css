@@ -395,6 +395,9 @@ li a {
     margin-left: 5px;
 }
 
+
+/* BANNER PRICE */
+
 .price {
     width: 20rem;
     height: 3rem;
@@ -409,6 +412,10 @@ li a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.price .fa-heart {
+    margin-left: 5px;
 }
 
 
