@@ -1,11 +1,11 @@
 function photographerBannerFactory(data) {
-    const { id, name, portrait, city, country, tagline } = data;
+    const { id, name, portrait, city, country, price, tagline } = data;
+    // console.log(data);
     
     const pictureBanner = `assets/photographers/ID_Photos/${portrait}`;
     
     function getUserBannerDOM() {
         let divHtml = `
-        <div class="photograph-header">
             <div id="photograph-description">
                 <header>
                     <h1>${name}</h1>
@@ -20,10 +20,9 @@ function photographerBannerFactory(data) {
             </div>
             <div class="profil-photographers">
                 <img src="${pictureBanner}" alt="${name}" />
-            </div>
-      </div>           
+            </div>          
             `;
         return divHtml;
     }
-    return { id, name, portrait, city, country, tagline, getUserBannerDOM };
+    return { id, name, portrait, city, country, price, tagline, getUserBannerDOM };
 };

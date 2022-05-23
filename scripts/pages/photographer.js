@@ -1,21 +1,21 @@
 const queryString = window.location.search;
 const userId = new URLSearchParams(queryString).get('id');
 const userName = new URLSearchParams(queryString).get('name');
-// console.log(userId);
-// console.log(userName);
 
+// console.log(userId);
 
 
 async function displayData(media, name, photographers) {
     const photographerBanner = document.querySelector(".photograph-header");
     const photographersMedia = document.querySelector(".media");
-    const photographersPriceBanner = document.querySelector(".price");
+    const photographersBannerLike = document.getElementById('like');
+    const photographersBannerPrice = document.getElementById('price');
+    // const sumLike = (media.likes).reduce((a, b) => a + b);
 
-    
+   
     
     // BANNER PROFIL
     for (photographer of photographers) {
-        console.log(photographer);
         photographerBanner.innerHTML = photographerBannerFactory(photographer)
         .getUserBannerDOM();
     };
@@ -26,20 +26,25 @@ async function displayData(media, name, photographers) {
         .getUserMediaDOM();
     });
     
-    // BANNER PRICE
+    // BANNER LIKE / PRICE
     for(data of media) {
-        photographersPriceBanner.innerHTML = photographerPriceBannerFactory(data)
+        photographersBannerLike.innerHTML = photographerLikeBannerFactory(data)
+        .getUserLikeBannerDOM();
+    };
+
+    for(data of photographers) {
+        photographersBannerPrice.innerHTML = photographerPriceBannerFactory(data)
         .getUserPriceBannerDOM();
     };
-    
 };
 
 
 async function initMedia() {
     // Récupère les datas des photographes
-    const { media, photographers } = await getPhotographDatas();
+    const { photographers, media } = await getPhotographDatas(); // API
     const usersInfo = media.filter((md) => md.photographerId == userId);
-    displayData(usersInfo, userName, photographers, media);
+    const userProfil = photographers.filter((photographer) => photographer.id == userId);
+    displayData(usersInfo, userName, userProfil, photographers, media);
 };
 
 initMedia();

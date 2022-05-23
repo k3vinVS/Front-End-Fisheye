@@ -398,7 +398,7 @@ li a {
 
 /* BANNER PRICE */
 
-.price {
+.priceBanner {
     width: 20rem;
     height: 3rem;
     margin-right: 2rem;
@@ -414,7 +414,8 @@ li a {
     align-items: center;
 }
 
-.price .fa-heart {
+
+.priceBanner #like .fa-heart {
     margin-left: 5px;
 }
 
