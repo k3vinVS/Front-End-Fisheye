@@ -10,7 +10,6 @@ async function displayData(media, name, photographers) {
     const photographersMedia = document.querySelector(".media");
     const photographersBannerLike = document.getElementById('like');
     const photographersBannerPrice = document.getElementById('price');
-    // const sumLike = (media.likes).reduce((a, b) => a + b);
 
    
     
@@ -27,10 +26,10 @@ async function displayData(media, name, photographers) {
     });
     
     // BANNER LIKE / PRICE
-    for(data of media) {
-        photographersBannerLike.innerHTML = photographerLikeBannerFactory(data)
-        .getUserLikeBannerDOM();
-    };
+    let sumLike = media.reduce((a, b) => a + b.likes, 0);
+    // console.log(sumLike);
+    photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
+    .getUserLikeBannerDOM();
 
     for(data of photographers) {
         photographersBannerPrice.innerHTML = photographerPriceBannerFactory(data)
@@ -48,6 +47,9 @@ async function initMedia() {
 };
 
 initMedia();
+
+
+
 
 
 

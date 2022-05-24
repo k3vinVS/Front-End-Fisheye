@@ -1,13 +1,12 @@
-function photographerLikeBannerFactory(data) {
-    const { likes } = data;
-    // console.log(data);
+function photographerLikeBannerFactory(numLike) {
+    // console.log(numLike);
         
     function getUserLikeBannerDOM() {
         let likeBannerHtml = 
-        `<p>${likes}<i class="fa fa-solid fa-heart"></i></p>`;
+        `<p>${numLike}<i class="fa fa-solid fa-heart"></i></p>`;
         return likeBannerHtml;
     }  
-    return { likes, getUserLikeBannerDOM };
+    return { numLike, getUserLikeBannerDOM };
 };
 
 

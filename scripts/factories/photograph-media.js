@@ -10,29 +10,29 @@ function photographerMediaFactory(data, name) {
     function getUserMediaDOM() {
         
         let articleHtml = `
+        <div class="media-card">
             <a href="photographer.html?id=${photographerId}" class="media-photograph">
-                <div class="media-picture">
-                <img src="${mediaPicture}" alt="${title}">
-                    <div class="info">
-                        <p class="info-title">${title}</p>
-                        <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
-                    </div>                
-                </div>
+                <img src="${mediaPicture}" alt="${title}">                
             </a>            
+            <div class="info">
+                <p class="info-title">${title}</p>
+                <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
+            </div>
+        </div>             
             `;
         let articleVideoHtml = `
+        <div class="media-card">
             <a href="photographer.html?id=${photographerId}" class="media-photograph">
-                <div class="media-picture">
                 <video preload="auto" controls>
                     <source src="${mediaVideo}" type="video/webm" />
                     <source src="${mediaVideo}" type="video/mp4" />
                 </video>
-                    <div class="info">
-                        <p class="info-title">${title}</p>
-                        <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
-                    </div>                
-                </div>
-            </a>            
+            </a>  
+            <div class="info">
+                <p class="info-title">${title}</p>
+                <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
+            </div>                
+        </div>          
             `;
 
         if(data.image){

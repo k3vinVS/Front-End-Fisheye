@@ -4,6 +4,7 @@ const inputFirstName = document.getElementById('first');
 const inputLastName = document.getElementById('last');
 const inputEmail = document.getElementById('email');
 const inputMessage = document.getElementById('message');
+// const inputMessage = document.getElementById('message');
 
 
 
