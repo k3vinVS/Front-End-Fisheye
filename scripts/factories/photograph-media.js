@@ -15,8 +15,10 @@ function photographerMediaFactory(data, name) {
                 <img src="${mediaPicture}" alt="${title}">                
             </a>            
             <div class="info">
-                <p class="info-title">${title}</p>
-                <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
+                <p class="info-title">${title}</i></p>
+                <p class="info-like">${likes}
+                    <button class="likes"></button>
+                </p>
             </div>
         </div>             
             `;
@@ -30,7 +32,9 @@ function photographerMediaFactory(data, name) {
             </a>  
             <div class="info">
                 <p class="info-title">${title}</p>
-                <p class="info-like">${likes}<i class="fa fa-solid fa-heart"></i></p>
+                <p class="info-like">${likes}
+                    <button class="likes"></button>
+                </p>
             </div>                
         </div>          
             `;

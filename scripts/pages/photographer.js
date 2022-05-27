@@ -2,6 +2,7 @@ const queryString = window.location.search;
 const userId = new URLSearchParams(queryString).get('id');
 const userName = new URLSearchParams(queryString).get('name');
 
+
 // console.log(userId);
 
 
@@ -10,6 +11,7 @@ async function displayData(media, name, photographers) {
     const photographersMedia = document.querySelector(".media");
     const photographersBannerLike = document.getElementById('like');
     const photographersBannerPrice = document.getElementById('price');
+    
 
    
     
@@ -18,16 +20,66 @@ async function displayData(media, name, photographers) {
         photographerBanner.innerHTML = photographerBannerFactory(photographer)
         .getUserBannerDOM();
     };
+
+
+
+    // DROPDOWN
+    const dropdownDate = document.querySelector('.dropdown-list-date');
+    const dropdownTitre = document.querySelector('.dropdown-list-titre');
     
+    dropdownDate.addEventListener('click', () => {
+        media.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+        console.log(media);
+    });
+
+    dropdownTitre.addEventListener('click', () => {
+        // console.log(media);
+        media.sort((a, b) => a.title.localeCompare(b.title));  
+        console.log(media);
+    });
+
+    
+
+
+
+
     // SECTION MEDIA
     media.forEach((data) => {
         photographersMedia.innerHTML += photographerMediaFactory(data, name)
         .getUserMediaDOM();
     });
     
+    
+    const likes = document.querySelectorAll('.likes');
+    
+    likes.forEach((like) => {
+        like.addEventListener('click', () => {            
+            if(like.style.background = 'url(../assets/icons/like.svg)') {
+                like.style.background = 'url(../assets/icons/dislike.svg)';
+
+                let sumLike = media.reduce((a, b) => a - b.likes, 0);
+                console.log(sumLike);
+                // likes.innerHtml = 
+                photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
+                .getUserLikeBannerDOM();
+    
+                console.log('dislike');
+            }
+            else {
+                like.style.background = 'url(../assets/icons/like.svg)';
+                console.log('like');
+            }
+        });                
+    });
+
+
+
+    
     // BANNER LIKE / PRICE
     let sumLike = media.reduce((a, b) => a + b.likes, 0);
-    // console.log(sumLike);
+    
     photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
     .getUserLikeBannerDOM();
 

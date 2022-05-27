@@ -389,14 +389,22 @@ li a {
 }
 
 .info .info-like {
+    display: flex;
     width: 20%;
-    text-align: end;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.info .info-like .fa {
-    margin-left: 5px;
+/* LIKE */
+.info .info-like .likes {
+    width: 1rem;
+    height: 1rem;
+    margin-left: 3px;
     cursor: pointer;
+    border: none;
+    background: url(../assets/icons/like.svg);
 }
+
 
 
 
