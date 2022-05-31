@@ -1,54 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <script src="https://kit.fontawesome.com/0afa139e37.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/0afa139e37.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-    <title>Fisheye - photographe </title>
+    <title>Fisheye - photographe</title>
   </head>
   <body>
-
     <header>
       <a href="./index.html">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
       </a>
     </header>
 
     <main id="main">
-
-
       <!-- PHOTOGRAPH PROFIL -->
 
       <div class="photograph-header">
-
-        <!-- <div id="photograph-description">
-          <header>
-            <h1>Mimi Keel</h1>
-          </header>
-
-          <div class="description">
-            <p class="location">London, UK</p>
-            <p class="citation">Voir le beau dans le quotidien</p>
-          </div>
-
-        </div>
-
-        <div id="button">
-          <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-        </div>
-
-        <div class="profil-photographers">
-          <img src="./assets/photographers/ID_Photos/MimiKeel.jpg" alt="" />
-        </div> -->
-
+        
       </div>
-
-
 
       <!-- Menu déroulant -->
 
@@ -56,38 +41,44 @@
         <nav aria-label="Main navigation">
           <p>Trier par</p>
 
-          <ul role="button" aria-label="Main navigation"> 
+          <ul role="button" aria-label="Main navigation">
             <li class="menu-deroulant">
-              <a href="#" role="buttonItem" aria-haspopup="listbox" 
-              aria-expanded="false">Popularité</a>
+              <a
+                href="#"
+                role="buttonItem"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                >Popularité</a
+              >
 
               <ul class="sous-menu" role="listbox">
                 <li role="none" class="dropdown-list-date">
                   <div class="topline"></div>
-                  <a href="#" aria-haspopup="listbox" tabindex="-1" value="date">Date</a>
+                  <a href="#" aria-haspopup="listbox" tabindex="-1" value="date"
+                    >Date</a
+                  >
                 </li>
 
                 <li role="none" class="dropdown-list-titre">
                   <div class="topline"></div>
-                  <a href="#" aria-haspopup="listbox" tabindex="-1" value="titre">Titre</a>
+                  <a
+                    href="#"
+                    aria-haspopup="listbox"
+                    tabindex="-1"
+                    value="titre"
+                    >Titre</a
+                  >
                 </li>
               </ul>
-
             </li>
           </ul>
         </nav>
       </div>
 
-
-
       <!-- PHOTOGRAPH MEDIA -->
 
       <section class="media"></section>
-
     </main>
-
-
-
 
     <!-- PRICE BANNER -->
 
@@ -96,68 +87,111 @@
       <div id="price"></div>
     </div>
 
-
-
-
     <!-- LIGHTBOX -->
 
-    
-    
+    <div id="lightbox-modale" class="lightbox-modal">
+      <span class="lightbox-close">&times;</span>
+      <span class="prev"></span>
+      <span class="next"></span>
+      <div class="lightbox-modal_content">
+        <img src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_Corner_Room.jpg" alt="${title}" />
+        <!-- <video preload="auto" controls>
+          <source src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" type="video/webm" />
+          <source src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" type="video/mp4" />
+        </video> -->
+      </div>
+      <div class="info">
+        <p class="info-title">${title}</p>
+      </div>
+    </div>
 
-    
-    <!-- Modal -->
+
+
+    <!-- Modal Contact-->
     <div id="contact_modal">
-			<div class="modal">
-				
+      <div class="modal">
         <header>
           <div id="header-form">
             <h1>Contactez-moi</h1>
             <h1 id="modal-profil">Mimi Keel</h1>
           </div>
           <button aria-label="Close Contact form" id="close">
-            <img src="assets/icons/close.svg" onclick="closeModal()"
-            alt="Close Contact form"/>
+            <img
+              src="assets/icons/close.svg"
+              onclick="closeModal()"
+              alt="Close Contact form"
+            />
           </button>
         </header>
-				
+
         <form method="get" action="" aria-labelledby="${id}">
-					<div>
-						<label for="first">Prénom</label>
-						<input class="text-control" type="text" id="first" name="First name" 
-            minlength="2" aria-label="First name" required/>
+          <div>
+            <label for="first">Prénom</label>
+            <input
+              class="text-control"
+              type="text"
+              id="first"
+              name="First name"
+              minlength="2"
+              aria-label="First name"
+              required
+            />
             <small></small>
-						
+
             <label for="last">Nom</label>
-						<input class="text-control" type="text" id="last" name="Last name" 
-            minlength="2" aria-label="Last name" required/>
+            <input
+              class="text-control"
+              type="text"
+              id="last"
+              name="Last name"
+              minlength="2"
+              aria-label="Last name"
+              required
+            />
             <small></small>
 
-						<label for="email">Email</label>
-						<input class="text-control" type="email" id="email" name="Email" 
-            aria-label="Email" required/>
+            <label for="email">Email</label>
+            <input
+              class="text-control"
+              type="email"
+              id="email"
+              name="Email"
+              aria-label="Email"
+              required
+            />
             <small></small>
 
-						<label for="message">Votre message</label>
-            <textarea name="Your message" id="message" cols="36" rows="3" required></textarea>
+            <label for="message">Votre message</label>
+            <textarea
+              name="Your message"
+              id="message"
+              cols="36"
+              rows="3"
+              required
+            ></textarea>
             <small></small>
-						<!-- <input class="text-control" type="text" id="message"
+            <!-- <input class="text-control" type="text" id="message"
             name="Your message" size="3" rows="3" aria-label="Your message" required/> -->
-					</div>
+          </div>
 
-          <button type="submit" class="contact_button" name="Send" 
-          aria-label="Send">Envoyer</button>
-				</form>
+          <button
+            type="submit"
+            class="contact_button"
+            name="Send"
+            aria-label="Send"
+          >
+            Envoyer
+          </button>
+        </form>
+      </div>
+    </div>
 
-			</div>
-		</div>
-
-
-    <script src="scripts/utils/photographerApi.js"></script>
+    <script src="./scripts/utils/photographerApi.js"></script>
+    <script src="./scripts/factories/photograph-media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
-    <script src="scripts/factories/photographer-banner.js"></script>
-    <script src="scripts/factories/photograph-media.js"></script>
-    <script src="scripts/factories/price-banner.js"></script>
-    <script src="scripts/utils/lightbox.js"></script>
+    <script src="./scripts/factories/photographer-banner.js"></script>
+    <script src="./scripts/factories/price-banner.js"></script>
+    <script src="./scripts/utils/lightbox.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
