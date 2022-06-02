@@ -40,8 +40,8 @@ async function displayData(media, name, photographers) {
 
     function showMedia(mediaArray) {
         photographersMedia.innerHTML = '';
-        mediaArray.forEach((data, index) => {
-            photographersMedia.innerHTML += photographerMediaFactory(data, name, index).getUserMediaDOM();
+        mediaArray.forEach((data) => {
+            photographersMedia.innerHTML += photographerMediaFactory(data, name).getUserMediaDOM();
         });
     };
 
@@ -60,26 +60,35 @@ async function displayData(media, name, photographers) {
     // COUNT LIKES
 
     function countLike() {
+        const displayLike = document.querySelectorAll('.info-like');
+        // console.log(displayLike[0].textContent);
         const likes = document.querySelectorAll('.likes');
+
         likes.forEach((like) => {
             like.addEventListener('click', () => {
                 // console.log(like);
-                if(like.classList.contains('dislikes')) {
-                    let sumLike = media.reduce((a, b) => a + b.likes, -1);
-                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike).getUserLikeBannerDOM();
-                    console.log(sumLike);
-                    console.log('dislikes');
-                } else if(like.classList.contains('likes')) {
-                    let sumLike = media.reduce((a, b) => a + b.likes, 0);
-                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike).getUserLikeBannerDOM();
-                    console.log(sumLike);
-                    console.log('likes');
+                if (like.classList.contains('dislikes')) {
+                    for (i = 0; i < displayLike.length; i++) {
+                        downLikeMedia = (displayLike[i].innerText) - 1;
+                        // console.log(downLikeMedia);
+                        displayLike.textContent = downLikeMedia;
+                        // downLikeMedia.textContent = photographerMediaFactory(downLikeMedia).getUserMediaDOM();
+                        console.log(displayLike);
+                    }
+                    let downLikeBanner = sumLike -= 1;
+                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(downLikeBanner).getUserLikeBannerDOM();
+                    // console.log(downLikeBanner);
+
+                } else if (like.classList.contains('likes')) {
+                    let upLike = sumLike += 1;
+                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(upLike).getUserLikeBannerDOM();
+                    // console.log(upLike);
                 }
             })
         });
-
     }
     countLike();
+
 
     // PRICE
     for (data of photographers) {
@@ -96,11 +105,11 @@ function updateLike(e) {
     if (e.currentTarget.classList.contains('likes')) {
         e.currentTarget.classList.remove('likes');
         e.currentTarget.classList.add('dislikes');
-        // console.log(e);
+        // console.log('dislike');
     } else if (e.currentTarget.classList.contains('dislikes')) {
         e.currentTarget.classList.remove('dislikes');
         e.currentTarget.classList.add('likes');
-        // console.log(e);
+        // console.log('like');
     }
 }
 
