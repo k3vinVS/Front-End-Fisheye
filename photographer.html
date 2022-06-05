@@ -89,20 +89,38 @@
 
     <!-- LIGHTBOX -->
 
-    <div id="lightbox-modale" class="lightbox-modal">
-      <span class="lightbox-close">&times;</span>
-      <span class="prev"></span>
-      <span class="next"></span>
-      <div class="lightbox-modal_content">
-        <img src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_Corner_Room.jpg" alt="${title}" />
-        <!-- <video preload="auto" controls>
-          <source src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" type="video/webm" />
-          <source src="./assets/images/Sample_Photos/Marcel Nikolic/Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4" type="video/mp4" />
-        </video> -->
+    <div id="lightbox-modale" class="lightbox-modal"></div>
+    <div id="body-container">
+        <div class="wrapper">
+          <div class="gallery">
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Connected_Curves.jpg" alt=""></span></div>
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Cross_Bar.jpg" alt=""></span></div>
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Horseshoe.jpg" alt=""></span></div>
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Water_on_Modern.jpg" alt=""></span></div>
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_White_Light.jpg" alt=""></span></div>
+            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Sport_Jump.jpg" alt=""></span></div>
+          </div>
+          
+          <div class="preview-box">
+          <div class="details">
+            <span class="title">
+              Image <p class="current-img"></p>
+              of <p class="total-img"></p>
+            </span>
+            <span class="icon fas fa-times"></span>
+          </div>
+            <div class="img-box">
+            <div class="slide prev">
+              <i class="fas fa-angle-left"></i>
+            </div>
+            <div class="slide next">
+              <i class="fas fa-angle-right"></i>
+            </div>
+            <img src="" alt="">
+            </div>
+        </div>
       </div>
-      <div class="info">
-        <p class="info-title">${title}</p>
-      </div>
+      <div class="shadow"></div>
     </div>
 
 
@@ -169,9 +187,7 @@
               rows="3"
               required
             ></textarea>
-            <small></small>
-            <!-- <input class="text-control" type="text" id="message"
-            name="Your message" size="3" rows="3" aria-label="Your message" required/> -->
+            <small></small>            
           </div>
 
           <button
@@ -184,6 +200,7 @@
           </button>
         </form>
       </div>
+      <div class="shadow-modal"></div>
     </div>
 
     <script src="./scripts/utils/photographerApi.js"></script>

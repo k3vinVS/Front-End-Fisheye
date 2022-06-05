@@ -4,18 +4,19 @@ const inputFirstName = document.getElementById('first');
 const inputLastName = document.getElementById('last');
 const inputEmail = document.getElementById('email');
 const inputMessage = document.getElementById('message');
-// const inputMessage = document.getElementById('message');
-
+const shadowModal = document.querySelector('.shadow-modal');
 
 
 function displayModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+	shadowModal.style.display = 'block';
 }
 
 function closeModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "none";
+	shadowModal.style.display = 'none';
 	window.location.reload();
 }
 
@@ -148,7 +149,7 @@ form.addEventListener('submit', function () {
 	) {
 		return true;
 
-	} else {	
+	} else {
 		return false;
 	}
 });

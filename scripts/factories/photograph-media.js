@@ -16,9 +16,10 @@ function photographerMediaFactory(data, name, index) {
             </a>            
             <div class="info">
                 <p class="info-title">${title}</i></p>
-                <p class="info-like">${likes}
+                <span class="info-like">
+                    <p class="numberOfLike">${likes}</p>
                     <button class="likes" onclick="updateLike(${'event'})"></button>
-                </p>
+                </span>
             </div>
         </div>             
             `;
@@ -32,9 +33,10 @@ function photographerMediaFactory(data, name, index) {
             </a>  
             <div class="info">
                 <p class="info-title">${title}</p>
-                <p class="info-like">${likes}
+                <span class="info-like">
+                    <p class="numberOfLike">${likes}</p>
                     <button class="likes" onclick="updateLike(${'event'})"></button>
-                </p>
+                </span>
             </div>                
         </div>          
             `;

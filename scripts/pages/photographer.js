@@ -61,20 +61,20 @@ async function displayData(media, name, photographers) {
 
     function countLike() {
         const displayLike = document.querySelectorAll('.info-like');
-        // console.log(displayLike[0].textContent);
+        const numberOfLike = document.querySelectorAll('.numberOfLike');
         const likes = document.querySelectorAll('.likes');
 
         likes.forEach((like) => {
             like.addEventListener('click', () => {
                 // console.log(like);
                 if (like.classList.contains('dislikes')) {
-                    for (i = 0; i < displayLike.length; i++) {
-                        downLikeMedia = (displayLike[i].innerText) - 1;
-                        // console.log(downLikeMedia);
-                        displayLike.textContent = downLikeMedia;
-                        // downLikeMedia.textContent = photographerMediaFactory(downLikeMedia).getUserMediaDOM();
-                        console.log(displayLike);
-                    }
+                    // for (i = 0; i < numberOfLike.length; i++) {
+                    //     downLikeMedia = numberOfLike[i].innerText - 1;
+                    //     console.log(downLikeMedia);
+                    //     numberOfLike[i].innerHTML = downLikeMedia;
+                    //     // displayLike.innerHTML += downLikeMedia;
+                    // }                    
+
                     let downLikeBanner = sumLike -= 1;
                     photographersBannerLike.innerHTML = photographerLikeBannerFactory(downLikeBanner).getUserLikeBannerDOM();
                     // console.log(downLikeBanner);
@@ -116,7 +116,6 @@ function updateLike(e) {
 
 
 async function initMedia() {
-    // Récupère les datas des photographes
     const { photographers, media } = await getPhotographDatas(); // API
     const usersInfo = media.filter((md) => md.photographerId == userId);
     const userProfil = photographers.filter((photographer) => photographer.id == userId);
