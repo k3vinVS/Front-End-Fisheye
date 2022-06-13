@@ -89,43 +89,31 @@
 
     <!-- LIGHTBOX -->
 
-    <div id="lightbox-modale" class="lightbox-modal"></div>
     <div id="body-container">
-        <div class="wrapper">
-          <div class="gallery">
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Connected_Curves.jpg" alt=""></span></div>
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Cross_Bar.jpg" alt=""></span></div>
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Horseshoe.jpg" alt=""></span></div>
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_Water_on_Modern.jpg" alt=""></span></div>
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Architecture_White_Light.jpg" alt=""></span></div>
-            <div class="image"><span><img src="./assets/images/Sample_Photos/Ellie-Rose Wilkens/Sport_Jump.jpg" alt=""></span></div>
-          </div>
-          
-          <div class="preview-box">
-          <div class="details">
-            <span class="title">
-              Image <p class="current-img"></p>
-              of <p class="total-img"></p>
-            </span>
-            <span class="icon fas fa-times"></span>
-          </div>
+        <div class="wrapper">          
+          <div class="preview-box">            
             <div class="img-box">
-            <div class="slide prev">
-              <i class="fas fa-angle-left"></i>
+              <div class="slide prev">
+                <i class="fas fa-angle-left"></i>
+              </div>
+              <div class="slide next">
+                <i class="fas fa-angle-right"></i>
+              </div>
+              <div class="picture"></div>
+              <span class="icon fas fa-times" onclick=""></span>
+            </div>            
+            <div class="details">
+              <span class="title"></span>
             </div>
-            <div class="slide next">
-              <i class="fas fa-angle-right"></i>
-            </div>
-            <img src="" alt="">
-            </div>
+          </div>
         </div>
-      </div>
       <div class="shadow"></div>
     </div>
 
 
 
     <!-- Modal Contact-->
+    
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -207,8 +195,8 @@
     <script src="./scripts/factories/photograph-media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/factories/photographer-banner.js"></script>
-    <script src="./scripts/factories/price-banner.js"></script>
     <script src="./scripts/utils/lightbox.js"></script>
+    <script src="./scripts/factories/price-banner.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
 </html>
