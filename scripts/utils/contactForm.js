@@ -17,7 +17,7 @@ function closeModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "none";
 	shadowModal.style.display = 'none';
-	window.location.reload();
+	// window.location.reload();
 }
 
 
@@ -39,6 +39,7 @@ function invalidInput(input) {
 // Ecoute de l'input du prénom
 inputFirstName.addEventListener('input', function () {
 	validFirstName(this);
+	// console.log(inputFirstName.value);
 });
 
 // Vérifie que l'input est renseigné, et le regex permet d'autoriser certains caractères, avec un minimum de 2 lettres (mets de côté les chiffres)
@@ -46,7 +47,7 @@ const validFirstName = function (acceptFirstName) {
 
 	let small = inputFirstName.nextElementSibling;
 	let firstNameRegExp = new RegExp(
-		'^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð-]{2,}$',
+		'^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ._\s-]{2,}$',
 		'u'
 	);
 
@@ -67,13 +68,14 @@ const validFirstName = function (acceptFirstName) {
 // Ecoute de l'input du nom
 inputLastName.addEventListener('input', function () {
 	validLastName(this);
+	// console.log(inputLastName.value);
 });
 
 // Vérifie que l'input est renseigné, et le regex permet d'autoriser certains caractères, avec un minimum de 2 lettres (mets de côté les chiffres)
 const validLastName = function (acceptLastName) {
 	let small = inputLastName.nextElementSibling;
 	let lastNameRegExp = new RegExp(
-		'^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð-]{2,}$',
+		'^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ._\s-]{2,}$',
 		'u'
 	);
 
@@ -94,6 +96,7 @@ const validLastName = function (acceptLastName) {
 // Ecoute de l'input de l'adresse email
 inputEmail.addEventListener('change', function () {
 	validEmail(this);
+	// console.log(inputEmail.value);
 });
 
 // Vérifie que l'input est renseigné, et le regex permet d'autoriser un certain nombre de caractères et l'obligation de symboles (comme toutes les adresses emails)
@@ -138,7 +141,31 @@ const validMessage = function (acceptMessage) {
 
 // Valid Form --------------------------------------
 
-form.addEventListener('submit', function () {
+function validForm() {
+	let small = document.querySelectorAll('small');
+	for (i = 0; i < small.length; i++) {
+		small[i].innerHTML = '';
+	}
+	console.log('Prénom: ' + inputFirstName.value);
+	console.log('Nom: ' + inputLastName.value);
+	console.log('Email: ' + inputEmail.value);
+	form.reset();
+	closeModal();
+}
+
+function errorForm() {
+	if (!validFirstName(inputFirstName) &&
+		!validLastName(inputLastName) &&
+		!validEmail(inputEmail) &&
+		!validMessage(inputMessage)
+	) {
+		return;
+	}
+
+}
+
+form.addEventListener('submit', function (e) {
+	e.preventDefault();
 
 	// Vérifie que les inputs sont remplis et valide
 	if (
@@ -147,9 +174,11 @@ form.addEventListener('submit', function () {
 		validEmail(inputEmail) &&
 		validMessage(inputMessage)
 	) {
+		validForm();
 		return true;
 
 	} else {
+		errorForm();
 		return false;
 	}
 });
