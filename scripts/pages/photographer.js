@@ -37,6 +37,7 @@ async function displayData(media, name, photographers) {
     dropdownTitre.addEventListener('click', () => {
         media.sort((a, b) => a.title.localeCompare(b.title));
         showMedia(media);
+        mediaLightbox();
     });
 
     function showMedia(mediaArray) {
@@ -108,8 +109,7 @@ async function displayData(media, name, photographers) {
 
                 console.log(e.target);
 
-                if (e.target.localName == 'img' || e.target.style.width > '3500px') {
-                    console.log('test img');
+                if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
