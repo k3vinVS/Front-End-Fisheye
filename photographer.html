@@ -82,7 +82,7 @@
 
     <!-- PRICE BANNER -->
 
-    <div class="priceBanner">
+    <div class="price-banner">
       <div id="like"></div>
       <div id="price"></div>
     </div>
@@ -99,12 +99,14 @@
               <div class="slide next">
                 <i class="fas fa-angle-right"></i>
               </div>
-              <div class="picture"></div>
-              <span class="icon fas fa-times" onclick=""></span>
+              <div class="img-lightbox">
+                <div class="picture"></div>
+                <span class="icon fas fa-times" onclick=""></span>
+                <div class="details">
+                  <span class="title"></span>
+                </div>
+              </div>
             </div>            
-            <div class="details">
-              <span class="title"></span>
-            </div>
           </div>
         </div>
       <div class="shadow"></div>
@@ -119,7 +121,7 @@
         <header>
           <div id="header-form">
             <h1>Contactez-moi</h1>
-            <h1 id="modal-profil">Mimi Keel</h1>
+            <h1 id="modal-profil"></h1>
           </div>
           <button aria-label="Close Contact form" id="close">
             <img
@@ -195,7 +197,6 @@
     <script src="./scripts/factories/photograph-media.js"></script>
     <script src="./scripts/pages/photographer.js"></script>
     <script src="./scripts/factories/photographer-banner.js"></script>
-    <script src="./scripts/utils/lightbox.js"></script>
     <script src="./scripts/factories/price-banner.js"></script>
     <script src="./scripts/utils/contactForm.js"></script>
   </body>
