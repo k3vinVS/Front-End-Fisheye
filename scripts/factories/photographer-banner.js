@@ -16,10 +16,10 @@ function photographerBannerFactory(data) {
                 </div>
             </div>
             <div id="button">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                <button class="contact_button" onclick="displayModal()" alt="Contact Me" aria-label="Contactez moi">Contactez-moi</button>
             </div>
             <div class="profil-photographers">
-                <img src="${pictureBanner}" alt="${name}" />
+                <img src="${pictureBanner}" alt="${name}" aria-label="Photo de profil" />
             </div>          
             `;
         return divHtml;

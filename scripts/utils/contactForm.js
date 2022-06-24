@@ -1,5 +1,7 @@
 // DOM ELEMENTS
 const form = document.querySelector('form');
+const modal = document.querySelector('.modal');
+const closeButton = document.getElementById('close');
 const inputFirstName = document.getElementById('first');
 const inputLastName = document.getElementById('last');
 const inputEmail = document.getElementById('email');
@@ -11,15 +13,27 @@ function displayModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
 	shadowModal.style.display = 'block';
+	inputFirstName.focus();
 }
 
 function closeModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "none";
 	shadowModal.style.display = 'none';
-	// window.location.reload();
 }
 
+modal.addEventListener('keydown', (e) => {
+	let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+
+	if (!isTabPressed) {
+		return;
+	}
+
+	if (document.activeElement === closeButton) {
+		inputFirstName.focus();
+		e.preventDefault();
+		}
+})
 
 // Enlève les bordures des inputs valide
 function validInput(input) {

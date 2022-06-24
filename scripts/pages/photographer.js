@@ -22,23 +22,7 @@ async function displayData(media, name, photographers) {
 
 
 
-    // DROPDOWN
-    const dropdownDate = document.querySelector('.dropdown-list-date');
-    const dropdownTitre = document.querySelector('.dropdown-list-titre');
 
-    dropdownDate.addEventListener('click', () => {
-        media.sort((a, b) => {
-            return new Date(a.date) - new Date(b.date);
-        });
-        showMedia(media);
-        mediaLightbox();
-    });
-
-    dropdownTitre.addEventListener('click', () => {
-        media.sort((a, b) => a.title.localeCompare(b.title));
-        showMedia(media);
-        mediaLightbox();
-    });
 
     function showMedia(mediaArray) {
         photographersMedia.innerHTML = '';
@@ -87,12 +71,12 @@ async function displayData(media, name, photographers) {
 
 
 
-    function showLightbox(type, url) {
+    function showLightbox(type, url, media) {
         picture.innerHTML = type == 'img'
             ? `<img src="${url}" alt="" />`
             : `<video preload="auto" controls>
-        <source src="${url}" type="video/webm" />
-        <source src="${url}" type="video/mp4" />
+        <source src="${url}" type="video/webm" alt="" />
+        <source src="${url}" type="video/mp4" alt="" />
         </video>`;
         // console.log(url);
     };
@@ -107,7 +91,7 @@ async function displayData(media, name, photographers) {
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
 
-                console.log(e.target);
+                // console.log(e.target);
 
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
@@ -217,9 +201,49 @@ async function displayData(media, name, photographers) {
             .getUserPriceBannerDOM();
     };
 
-    
+
     // MODAL PROFIL
     document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
+
+    // DROPDOWN
+    const dropdownPopularity = document.querySelector('.menu-deroulant a');
+    const dropdownDate = document.querySelector('.dropdown-list-date a');
+    const dropdownTitle = document.querySelector('.dropdown-list-titre a');
+    const numberOfLike = document.querySelectorAll('.numberOfLike');
+    // console.log(numberOfLike);
+    // dropdownPopularity.querySelector('.menu-deroulant').addEventListener('change', handleTitleChange);
+
+    
+    dropdownPopularity.addEventListener('click', (e) => {
+        media.sort((a, b) => {
+            return b.likes - a.likes;
+        });
+        // dropdownPopularity.innerHTML = 'Popularité';
+        // dropdownDate.innerHTML = 'Date';
+        // dropdownTitle.innerHTML = 'Titre';
+        showMedia(media);
+        mediaLightbox();
+    });
+
+    dropdownDate.addEventListener('click', () => {
+        media.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+        // dropdownPopularity.innerHTML = 'Date';
+        // dropdownDate.innerHTML = 'Popularité';
+        // dropdownTitle.innerHTML = 'Titre';
+        showMedia(media);
+        mediaLightbox();
+    });
+
+    dropdownTitle.addEventListener('click', () => {
+        media.sort((a, b) => a.title.localeCompare(b.title));
+        // dropdownPopularity.innerHTML = 'Titre';
+        // dropdownDate.innerHTML = 'Popularité';
+        // dropdownTitle.innerHTML = 'Date';
+        showMedia(media);
+        mediaLightbox();
+    });
 
 };
 
@@ -248,5 +272,3 @@ async function initMedia() {
 };
 
 initMedia();
-
-

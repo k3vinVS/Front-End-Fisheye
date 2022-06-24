@@ -11,12 +11,12 @@ function photographerMediaFactory(data, name, index) {
 
         let articleHtml = `
         <div class="media-card">
-            <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image/jpg" /></span>           
+            <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image/jpg" aria-label="Image"/></span>           
             <div class="info">
                 <p class="info-title">${title}</p>
                 <span class="info-like">
                     <p class="numberOfLike">${likes}</p>
-                    <button class="dislikes" onclick="updateLike(${'event'})"></button>
+                    <button class="dislikes" onclick="updateLike(${'event'})" aria-label="likes"></button>
                 </span>
             </div>
         </div>             
@@ -25,15 +25,15 @@ function photographerMediaFactory(data, name, index) {
         <div class="media-card">
                 <span class="mediaCard">
                     <video preload="auto" controls controlslist="nofullscreen">
-                        <source src="${mediaVideo}" type="video/webm" />
-                        <source src="${mediaVideo}" type="video/mp4" />
+                        <source src="${mediaVideo}" type="video/webm" aria-label="Vidéo"/>
+                        <source src="${mediaVideo}" type="video/mp4" aria-label="Vidéo"/>
                     </video>
                 </span>
             <div class="info">
                 <p class="info-title">${title}</p>
                 <span class="info-like">
                     <p class="numberOfLike">${likes}</p>
-                    <button class="dislikes" onclick="updateLike(${'event'})"></button>
+                    <button class="dislikes" onclick="updateLike(${'event'})" aria-label="likes"></button>
                 </span>
             </div>                
         </div>          

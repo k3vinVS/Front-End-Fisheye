@@ -24,6 +24,7 @@
           src="assets/images/logo.png"
           class="logo"
           alt="Fisheye Home page"
+          aria-label="Page d'acceuil"
         />
       </a>
     </header>
@@ -41,20 +42,21 @@
         <nav aria-label="Main navigation">
           <p>Trier par</p>
 
-          <ul role="button" aria-label="Main navigation">
+          <ul role="menubar" alt="Order by" aria-labelledby="Main navigation">
             <li class="menu-deroulant">
               <a
-                href="#"
-                role="buttonItem"
-                aria-haspopup="listbox"
-                aria-expanded="false"
+              role="menuitem"
+              aria-haspopup="true"
+              aria-expanded="false"
+              href="#"
+                tabindex="0"
                 >Popularité</a
               >
 
-              <ul class="sous-menu" role="listbox">
+              <ul class="sous-menu" role="menu" aria-label="Popularité">
                 <li role="none" class="dropdown-list-date">
                   <div class="topline"></div>
-                  <a href="#" aria-haspopup="listbox" tabindex="-1" value="date"
+                  <a role="menuitem" tabindex="-1" value="date"
                     >Date</a
                   >
                 </li>
@@ -62,8 +64,7 @@
                 <li role="none" class="dropdown-list-titre">
                   <div class="topline"></div>
                   <a
-                    href="#"
-                    aria-haspopup="listbox"
+                    role="menuitem"                    
                     tabindex="-1"
                     value="titre"
                     >Titre</a
@@ -94,14 +95,14 @@
           <div class="preview-box">            
             <div class="img-box">
               <div class="slide prev">
-                <i class="fas fa-angle-left"></i>
+                <i class="fas fa-angle-left" aria-label="Image précédente"></i>
               </div>
               <div class="slide next">
-                <i class="fas fa-angle-right"></i>
+                <i class="fas fa-angle-right" aria-label="Image suivante"></i>
               </div>
               <div class="img-lightbox">
                 <div class="picture"></div>
-                <span class="icon fas fa-times" onclick=""></span>
+                <span class="icon fas fa-times" aria-label="Fermer la lightbox"></span>
                 <div class="details">
                   <span class="title"></span>
                 </div>
@@ -117,22 +118,22 @@
     <!-- Modal Contact-->
     
     <div id="contact_modal">
-      <div class="modal">
+      <div class="modal" tabindex="-1">
         <header>
           <div id="header-form">
             <h1>Contactez-moi</h1>
             <h1 id="modal-profil"></h1>
           </div>
-          <button aria-label="Close Contact form" id="close">
+          <button aria-label="Close Contact form" id="close" onclick="closeModal()" tabindex="6">
             <img
               src="assets/icons/close.svg"
-              onclick="closeModal()"
               alt="Close Contact form"
+              aria-label="Fermer le formulaire"
             />
           </button>
         </header>
 
-        <form method="get" action="photographer.html" name="contact" aria-labelledby="${id}" novalidate>
+        <form method="get" action="photographer.html" name="contact" aria-labelledby="" novalidate>
           <div>
             <label for="first">Prénom</label>
             <input
@@ -140,8 +141,10 @@
               type="text"
               id="first"
               name="First name"
-              minlength="2"
+              alt="First name"
               aria-label="First name"
+              minlength="2"
+              tabindex="1"
               required
             />
             <small></small>
@@ -152,8 +155,10 @@
               type="text"
               id="last"
               name="Last name"
-              minlength="2"
+              alt="Last name"
               aria-label="Last name"
+              minlength="2"
+              tabindex="2"
               required
             />
             <small></small>
@@ -164,7 +169,9 @@
               type="email"
               id="email"
               name="Email"
+              alt="Email"
               aria-label="Email"
+              tabindex="3"
               required
             />
             <small></small>
@@ -172,9 +179,13 @@
             <label for="message">Votre message</label>
             <textarea
               name="Your message"
+              type="message"
               id="message"
+              alt="Message"
+              aria-label="Votre message"
               cols="36"
               rows="3"
+              tabindex="4"
               required
             ></textarea>
             <small></small>            
@@ -184,7 +195,9 @@
             type="submit"
             class="contact_button"
             name="Send"
-            aria-label="Send"            
+            alt="Send"
+            aria-label="Formulaire envoyé"
+            tabindex="5"
           >
             Envoyer
           </button>
