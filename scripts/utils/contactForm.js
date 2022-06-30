@@ -24,6 +24,11 @@ function closeModal() {
 
 modal.addEventListener('keydown', (e) => {
 	let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
+	let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+
+	if (isEscapePressed) {
+		closeModal();
+	}
 
 	if (!isTabPressed) {
 		return;
@@ -32,7 +37,8 @@ modal.addEventListener('keydown', (e) => {
 	if (document.activeElement === closeButton) {
 		inputFirstName.focus();
 		e.preventDefault();
-		}
+	}
+
 })
 
 // Enlève les bordures des inputs valide

@@ -31,7 +31,6 @@ async function displayData(media, name, photographers) {
     // SECTION MEDIA
     showMedia(media);
 
-
     // LIGHTBOX
 
     //Selecting all required elements
@@ -66,10 +65,7 @@ async function displayData(media, name, photographers) {
     };
 
 
-
-
-
-    function showLightbox(type, url, media) {
+    function showLightbox(type, url) {
         picture.innerHTML = type == 'img'
             ? `<img src="${url}" alt="" />`
             : `<video preload="auto" controls>
@@ -79,7 +75,7 @@ async function displayData(media, name, photographers) {
         // console.log(url);
     };
 
-    
+
     // picture.addEventListener('keydown', (e) => {
     //     console.log(e);
     //     let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
@@ -95,6 +91,20 @@ async function displayData(media, name, photographers) {
 
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
+        const pictureGallery = document.querySelectorAll('.mediaCard img');
+        // console.log(pictureGallery);
+
+        if(document.activeElement === gallery){
+            console.log('test lightbox');
+        }
+
+        // pictureGallery.forEach(image => {
+        //     console.log(image);
+        // });
+
+        // for (item of pictureGallery){
+        //     console.log(item);
+        // }
 
         previewBox.addEventListener('keydown', (e) => {
             let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
