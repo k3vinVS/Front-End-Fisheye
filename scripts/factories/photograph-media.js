@@ -11,7 +11,7 @@ function photographerMediaFactory(data, name, index) {
 
         let articleHtml = `
         <div class="media-card">
-            <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image/jpg" aria-label="Image"/></span>           
+        <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image" role='img' aria-label="Image" tabindex='0' /></span>                 
             <div class="info">
                 <p class="info-title">${title}</p>
                 <span class="info-like">
@@ -24,7 +24,7 @@ function photographerMediaFactory(data, name, index) {
         let articleVideoHtml = `
         <div class="media-card">
                 <span class="mediaCard">
-                    <video preload="auto" controls controlslist="nofullscreen">
+                    <video tabindex='0' preload="auto" role='application' controls muted controlslist="nofullscreen" aria-label='Vidéo'>
                         <source src="${mediaVideo}" type="video/webm" aria-label="Vidéo"/>
                         <source src="${mediaVideo}" type="video/mp4" aria-label="Vidéo"/>
                     </video>

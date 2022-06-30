@@ -21,9 +21,6 @@ async function displayData(media, name, photographers) {
     };
 
 
-
-
-
     function showMedia(mediaArray) {
         photographersMedia.innerHTML = '';
         mediaArray.forEach((data) => {
@@ -35,8 +32,13 @@ async function displayData(media, name, photographers) {
     // SECTION MEDIA
     showMedia(media);
 
-
-
+    // previewBox.onkeydown = function (e) {
+    //     console.log('test');
+    //     if (e.keyCode === 13) {
+    //         // document.activeElement.onclick(e);
+    //         console.log('test touche entrée');
+    //     }
+    // }
 
     // LIGHTBOX
 
@@ -44,7 +46,7 @@ async function displayData(media, name, photographers) {
     const title = document.querySelector('.title'),
         previewBox = document.querySelector('.preview-box'),
         previewImg = previewBox.querySelector('img'),
-        // previewVideo = previewBox.querySelector('video'),
+        previewVideo = previewBox.querySelector('video'),
         closeIcon = previewBox.querySelector('.icon'),
         shadow = document.querySelector('.shadow');
     const prevBtn = document.querySelector('.prev');
@@ -52,10 +54,13 @@ async function displayData(media, name, photographers) {
     const picture = document.querySelector('.picture');
     const modalLightbox = document.getElementById("body-container");
 
+
+
     // OPEN MODAL
     function displayModalLightbox() {
         modalLightbox.style.display = "block";
         shadow.style.display = 'block';
+        previewBox.focus();
     }
 
     // CLOSE MODAL
@@ -69,6 +74,23 @@ async function displayData(media, name, photographers) {
         mediaLightbox();
     };
 
+    previewBox.addEventListener('keydown', (e) => {
+        let isTabPressed = e.key === 'Tab' || e.keyCode == 9;
+
+        // console.log(e);
+
+        if (!isTabPressed) {
+            return;
+        }
+
+        if (document.activeElement === closeIcon) {
+            prevBtn.focus();
+            e.preventDefault();
+        }
+
+
+
+    });
 
 
     function showLightbox(type, url, media) {
@@ -85,15 +107,23 @@ async function displayData(media, name, photographers) {
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
 
+        previewBox.addEventListener('keydown', (e) => {
+            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+            if (isEnterPressed) {
+                console.log('test');
+                nextBtn.onclick();
+            }
+        });
+
+
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
+                // console.log(e.target);                
 
-                // console.log(e.target);
-
-                if (e.target.localName == 'img') {
+                if (e.target.localName == 'img' || e.keyCode === 13) {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
@@ -153,11 +183,10 @@ async function displayData(media, name, photographers) {
                     nextBtn.style.display = 'block';
                 }
             }
-            // console.log(newIndex);         
+            // console.log(newIndex);                     
         }
     };
     mediaLightbox();
-
 
 
     // BANNER LIKE / PRICE
@@ -205,47 +234,111 @@ async function displayData(media, name, photographers) {
     // MODAL PROFIL
     document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
 
+
     // DROPDOWN
-    const dropdownPopularity = document.querySelector('.menu-deroulant a');
-    const dropdownDate = document.querySelector('.dropdown-list-date a');
-    const dropdownTitle = document.querySelector('.dropdown-list-titre a');
-    const numberOfLike = document.querySelectorAll('.numberOfLike');
-    // console.log(numberOfLike);
-    // dropdownPopularity.querySelector('.menu-deroulant').addEventListener('change', handleTitleChange);
+    // const dropdownPopularity = document.querySelector('.menu-deroulant a');
+    // const dropdownDate = document.querySelector('.dropdown-list-date a');
+    // const dropdownTitle = document.querySelector('.dropdown-list-titre a');
+    // const numberOfLike = document.querySelectorAll('.numberOfLike');
+    // const selection = document.querySelector('select');
+    // const dropdownPopularity = document.querySelector('option[value="popularite"]');
+    // const dropdownDate = document.querySelector('option[value="date"]');
+    // const dropdownTitle = document.querySelector('option[value="titre"]');
 
-    
-    dropdownPopularity.addEventListener('click', (e) => {
-        media.sort((a, b) => {
-            return b.likes - a.likes;
-        });
-        // dropdownPopularity.innerHTML = 'Popularité';
-        // dropdownDate.innerHTML = 'Date';
-        // dropdownTitle.innerHTML = 'Titre';
-        showMedia(media);
-        mediaLightbox();
-    });
 
-    dropdownDate.addEventListener('click', () => {
-        media.sort((a, b) => {
-            return new Date(a.date) - new Date(b.date);
-        });
-        // dropdownPopularity.innerHTML = 'Date';
-        // dropdownDate.innerHTML = 'Popularité';
-        // dropdownTitle.innerHTML = 'Titre';
-        showMedia(media);
-        mediaLightbox();
-    });
 
-    dropdownTitle.addEventListener('click', () => {
-        media.sort((a, b) => a.title.localeCompare(b.title));
-        // dropdownPopularity.innerHTML = 'Titre';
-        // dropdownDate.innerHTML = 'Popularité';
-        // dropdownTitle.innerHTML = 'Date';
-        showMedia(media);
-        mediaLightbox();
-    });
+    // selection.addEventListener('change', () => {
+
+    //     if (selection.value == 'popularite') {
+    //         media.sort((a, b) => {
+    //             return b.likes - a.likes;
+    //         });
+    //         showMedia(media);
+    //         mediaLightbox();
+    //     }
+
+    //     if (selection.value == 'date') {
+    //         media.sort((a, b) => {
+    //             return new Date(a.date) - new Date(b.date);
+    //         });
+    //         showMedia(media);
+    //         mediaLightbox();
+    //     }
+
+    //     if (selection.value == 'titre') {
+    //         media.sort((a, b) => a.title.localeCompare(b.title));
+    //         showMedia(media);
+    //         mediaLightbox();
+    //     }
+    // })
+
+    // --------------dropdown autre méthode-----------------
+    // dropdownPopularity.addEventListener('click', () => {
+    //     console.log('clic');
+    //     media.sort((a, b) => {
+    //         return b.likes - a.likes;
+    //     });
+    //     dropdownPopularity.innerHTML = 'Popularité';
+    //     dropdownDate.innerHTML = 'Date';
+    //     dropdownTitle.innerHTML = 'Titre';
+    //     showMedia(media);
+    //     mediaLightbox();
+    // });
+
+
+    // dropdownDate.addEventListener('click', () => {
+    //     console.log('clic');
+    //     media.sort((a, b) => {
+    //         return new Date(a.date) - new Date(b.date);
+    //     });
+    //     dropdownPopularity.innerHTML = 'Date';
+    //     dropdownDate.innerHTML = 'Popularité';
+    //     dropdownTitle.innerHTML = 'Titre';
+    //     showMedia(media);
+    //     mediaLightbox();
+    // });
+
+    // dropdownTitle.addEventListener('click', () => {
+    //     media.sort((a, b) => a.title.localeCompare(b.title));
+    //     dropdownPopularity.innerHTML = 'Titre';
+    //     dropdownDate.innerHTML = 'Popularité';
+    //     dropdownTitle.innerHTML = 'Date';
+    //     showMedia(media);
+    //     mediaLightbox();
+    // });
 
 };
+
+
+
+const categories = document.querySelectorAll('.category');
+const menuItem = document.querySelector('.menu-item');
+let isOpen = false;
+
+function openDropdown() {
+    if (isOpen) {
+        document.querySelector('.dropdown').style.display = 'none';
+        isOpen = false;
+        document.querySelector('.fa-chevron-down').style.display = 'block';
+        document.querySelector('.fa-chevron-up').style.display = 'none';
+    } else {
+        document.querySelector('.dropdown').style.display = 'block';
+        isOpen = true;
+        document.querySelector('.fa-chevron-up').style.display = 'block';
+        document.querySelector('.fa-chevron-down').style.display = 'none';
+    };
+}
+
+menuItem.addEventListener('click', openDropdown);
+
+categories.forEach(category => {
+    category.addEventListener('click', (e) => {
+        let menuItemText = menuItem.textContent;
+        menuItem.textContent = e.currentTarget.textContent;
+        e.currentTarget.textContent = menuItemText;
+        openDropdown();
+    })
+})
 
 
 // MEDIA LIKES
