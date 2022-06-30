@@ -13,7 +13,6 @@ async function displayData(media, name, photographers) {
     const photographersBannerLike = document.getElementById('like');
     const photographersBannerPrice = document.getElementById('price');
 
-
     // BANNER PROFIL
     for (photographer of photographers) {
         photographerBanner.innerHTML = photographerBannerFactory(photographer)
@@ -32,21 +31,14 @@ async function displayData(media, name, photographers) {
     // SECTION MEDIA
     showMedia(media);
 
-    // previewBox.onkeydown = function (e) {
-    //     console.log('test');
-    //     if (e.keyCode === 13) {
-    //         // document.activeElement.onclick(e);
-    //         console.log('test touche entrée');
-    //     }
-    // }
 
     // LIGHTBOX
 
     //Selecting all required elements
     const title = document.querySelector('.title'),
         previewBox = document.querySelector('.preview-box'),
-        previewImg = previewBox.querySelector('img'),
-        previewVideo = previewBox.querySelector('video'),
+        // previewImg = previewBox.querySelector('img'),
+        // previewVideo = previewBox.querySelector('video'),
         closeIcon = previewBox.querySelector('.icon'),
         shadow = document.querySelector('.shadow');
     const prevBtn = document.querySelector('.prev');
@@ -54,13 +46,12 @@ async function displayData(media, name, photographers) {
     const picture = document.querySelector('.picture');
     const modalLightbox = document.getElementById("body-container");
 
-
-
     // OPEN MODAL
     function displayModalLightbox() {
         modalLightbox.style.display = "block";
         shadow.style.display = 'block';
         previewBox.focus();
+        previewBox.style.outline = 'none';
     }
 
     // CLOSE MODAL
@@ -74,23 +65,8 @@ async function displayData(media, name, photographers) {
         mediaLightbox();
     };
 
-    previewBox.addEventListener('keydown', (e) => {
-        let isTabPressed = e.key === 'Tab' || e.keyCode == 9;
-
-        // console.log(e);
-
-        if (!isTabPressed) {
-            return;
-        }
-
-        if (document.activeElement === closeIcon) {
-            prevBtn.focus();
-            e.preventDefault();
-        }
 
 
-
-    });
 
 
     function showLightbox(type, url, media) {
@@ -103,15 +79,36 @@ async function displayData(media, name, photographers) {
         // console.log(url);
     };
 
+    
+    // picture.addEventListener('keydown', (e) => {
+    //     console.log(e);
+    //     let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+
+    //     // if (!isTabPressed) {
+    //     //     return;
+    //     // }
+
+    //     if (document.activeElement === closeIcon) {
+    //         e.preventDefault();
+    //     }
+    // });
 
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
 
         previewBox.addEventListener('keydown', (e) => {
-            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-            if (isEnterPressed) {
-                console.log('test');
+            let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
+            let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
+            let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+            let isTabPressed = e.key === 'Tab' || e.keyCode == 9;
+            // console.log(e);
+
+            if (isLeftPressed) {
+                prevBtn.onclick();
+            } else if (isRightPressed) {
                 nextBtn.onclick();
+            } else if (isEscapePressed) {
+                closeModalLightbox();
             }
         });
 
@@ -121,9 +118,9 @@ async function displayData(media, name, photographers) {
 
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
-                // console.log(e.target);                
+                // console.log(e.target);
 
-                if (e.target.localName == 'img' || e.keyCode === 13) {
+                if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
