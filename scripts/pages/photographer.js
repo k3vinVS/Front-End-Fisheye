@@ -1,9 +1,7 @@
 const queryString = window.location.search;
 const userId = new URLSearchParams(queryString).get('id');
 const userName = new URLSearchParams(queryString).get('name');
-
-
-
+const logo = document.querySelector('header a');
 // console.log(userId);
 
 
@@ -18,7 +16,6 @@ async function displayData(media, name, photographers) {
         photographerBanner.innerHTML = photographerBannerFactory(photographer)
             .getUserBannerDOM();
     };
-
 
     function showMedia(mediaArray) {
         photographersMedia.innerHTML = '';
@@ -76,7 +73,7 @@ async function displayData(media, name, photographers) {
     };
 
 
-    // picture.addEventListener('keydown', (e) => {
+    // gallery.addEventListener('keydown', (e) => {
     //     console.log(e);
     //     let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
@@ -84,7 +81,8 @@ async function displayData(media, name, photographers) {
     //     //     return;
     //     // }
 
-    //     if (document.activeElement === closeIcon) {
+    //     if (document.activeElement === logo) {
+    //         console.log('test focus');
     //         e.preventDefault();
     //     }
     // });
@@ -94,12 +92,8 @@ async function displayData(media, name, photographers) {
         const pictureGallery = document.querySelectorAll('.mediaCard img');
         // console.log(pictureGallery);
 
-        if(document.activeElement === gallery){
-            console.log('test lightbox');
-        }
-
         // pictureGallery.forEach(image => {
-        //     console.log(image);
+        //     console.log(image);            
         // });
 
         // for (item of pictureGallery){
@@ -128,7 +122,7 @@ async function displayData(media, name, photographers) {
 
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
-                // console.log(e.target);
+                // console.log(e.target);                
 
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
@@ -314,38 +308,61 @@ async function displayData(media, name, photographers) {
     //     mediaLightbox();
     // });
 
-};
+    const categories = document.querySelectorAll('.category');
+    const menuItem = document.querySelector('.menu-item');
+    const dateCategory = document.querySelector('.date');
+    const titreCategory = document.querySelector('.titre');
+    let isOpen = false;
+    // const popularityCategory = document.querySelector('.popularity');
 
+    function openDropdown() {
+        if (isOpen) {
+            document.querySelector('.dropdown').style.display = 'none';
+            isOpen = false;
+            document.querySelector('.fa-chevron-down').style.display = 'block';
+            document.querySelector('.fa-chevron-up').style.display = 'none';
+        } else {
+            document.querySelector('.dropdown').style.display = 'block';
+            isOpen = true;
+            document.querySelector('.fa-chevron-up').style.display = 'block';
+            document.querySelector('.fa-chevron-down').style.display = 'none';
+        };
+    }
 
+    menuItem.addEventListener('click', openDropdown);
 
-const categories = document.querySelectorAll('.category');
-const menuItem = document.querySelector('.menu-item');
-let isOpen = false;
-
-function openDropdown() {
-    if (isOpen) {
-        document.querySelector('.dropdown').style.display = 'none';
-        isOpen = false;
-        document.querySelector('.fa-chevron-down').style.display = 'block';
-        document.querySelector('.fa-chevron-up').style.display = 'none';
-    } else {
-        document.querySelector('.dropdown').style.display = 'block';
-        isOpen = true;
-        document.querySelector('.fa-chevron-up').style.display = 'block';
-        document.querySelector('.fa-chevron-down').style.display = 'none';
-    };
-}
-
-menuItem.addEventListener('click', openDropdown);
-
-categories.forEach(category => {
-    category.addEventListener('click', (e) => {
-        let menuItemText = menuItem.textContent;
-        menuItem.textContent = e.currentTarget.textContent;
-        e.currentTarget.textContent = menuItemText;
-        openDropdown();
+    
+    dateCategory.addEventListener('click', () => {
+        media.sort((a, b) => {
+            return new Date(a.date) - new Date(b.date);
+        });
+        showMedia(media);
+        mediaLightbox();
     })
-})
+    
+    titreCategory.addEventListener('click', () => {
+        media.sort((a, b) => a.title.localeCompare(b.title));
+        showMedia(media);
+        mediaLightbox();
+    })
+    
+    categories.forEach(category => {
+        category.addEventListener('click', (e) => {
+            let menuItemText = menuItem.textContent;
+            menuItem.textContent = e.currentTarget.textContent;
+            e.currentTarget.textContent = menuItemText;
+            openDropdown();
+        })
+    })
+    
+    // popularityCategory.addEventListener('click', () => {
+    //     media.sort((a, b) => {
+    //         return b.likes - a.likes;
+    //     });
+    //     showMedia(media);
+    //     mediaLightbox();
+    // })
+};
 
 
 // MEDIA LIKES

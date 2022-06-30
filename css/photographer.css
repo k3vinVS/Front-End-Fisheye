@@ -417,7 +417,7 @@ select .populaire {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 1rem;
+  padding: 1rem;
   cursor: pointer;
   color: white;
 }
@@ -433,9 +433,13 @@ select .populaire {
 
 .dropdown {
   display: none;
+  position: absolute;
+  width: 140px;
   height: 95px;
+  margin: -3px auto auto -1px;
+  border-radius: 0 0 5px 5px;
   color: white;
-  /* background-color: #901c1c; */
+  background-color: #901c1c;
 }
 
 .dropdown .date {
