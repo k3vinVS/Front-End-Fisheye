@@ -255,117 +255,6 @@ body {
 
 /* ------------------------------------ MENU DEROULANT  ------------------------------------ */
 
-/* .liste {
-  margin-top: 20px;
-} */
-
-/* nav {
-  margin: 10px 100px;
-  width: 15rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-nav p {
-  font-weight: bold;
-}
-
-nav > ul {
-  display: flex;
-  text-align: center;
-  height: 3rem;
-  width: 8rem;
-  font-size: 14px;
-  background-color: #901c1c;
-  border-radius: 5px;
-}
-
-nav ul {
-  list-style-type: none;
-}
-
-nav > ul > li {
-  position: relative;
-  height: 100%;
-  flex: 1;
-}
-
-nav > ul > li > a {
-  display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-li a {
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-}
-
-.menu-deroulant > a:after {
-  content: ">";
-  transform: rotate(90deg);
-  font-size: 14px;
-  margin-left: 20px;
-  display: inline-block;
-}
-
-.sous-menu {
-  margin-top: 2.75rem;
-  width: 100%;
-  text-align: left;
-  border-radius: 0 0 5px 5px;
-  overflow: hidden;
-  max-height: 0;
-}
-
-.topline {
-  width: 7rem;
-  height: 2px;
-  margin: 0 0.5rem;
-  border-top: 1px solid white;
-}
-
-.sous-menu > li > a {
-  height: 2.5rem;
-  padding-left: 18px;
-  width: 100%;
-  align-items: center;
-  display: flex;
-}
-
-.menu-deroulant:hover > a:after {
-  animation: rotationFleche 0.2s linear forwards;
-}
-
-.menu-deroulant:hover > .sous-menu {
-  animation: apparitionSousMenu 1s forwards;
-}
-
-@keyframes rotationFleche {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-90deg);
-  }
-}
-
-@keyframes apparitionSousMenu {
-  0% {
-    background-color: #901c1c;
-  }
-  100% {
-    max-height: 25rem;
-    background-color: #901c1c;
-  }
-} */
-
-/* ------------------------------*/
-
 .liste {
   display: flex;
   justify-content: space-between;
@@ -377,37 +266,7 @@ li a {
   align-self: center;
 }
 
-/*.liste p {
-  font-size: 1rem;
-  align-self: center;
-} */
-
-/* .mybox{
-  width: 7rem;
-  height: 2.9rem;
-  border-radius: 5px;
-  overflow: hidden;
-} */
-
-/* .mybox select {
-  background-color: #901c1c;
-  height: 3rem;
-  width: 8rem;
-  font-size: 14px;
-  padding: 12px 10px;
-  border-radius: 5px;
-  color: white;
-  appearance: auto;
-  cursor: pointer;
-}
-
-select .populaire {
-  font-size: 1rem;
-  background-color: blue;
-} */
-
 .menu {
-  border: 1px solid black;
   width: 140px;
   border-radius: 5px;
   background-color: #901c1c;
@@ -436,7 +295,7 @@ select .populaire {
   position: absolute;
   width: 140px;
   height: 95px;
-  margin: -3px auto auto -1px;
+  margin: -4px 0 0 0;
   border-radius: 0 0 5px 5px;
   color: white;
   background-color: #901c1c;
@@ -459,6 +318,7 @@ select .populaire {
 .category {
   cursor: pointer;
 }
+
 
 /* ------------------------------------ PHOTOGRAPHER MEDIA  ------------------------------------ */
 

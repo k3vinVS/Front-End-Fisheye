@@ -1,7 +1,9 @@
 const queryString = window.location.search;
 const userId = new URLSearchParams(queryString).get('id');
 const userName = new URLSearchParams(queryString).get('name');
-const logo = document.querySelector('header a');
+// let isUpPressed = e.key === 'ArrowUp' || e.keyCode == 38;
+// let isDownPressed = e.key === 'ArrowDown' || e.keyCode == 40;
+// let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
 // console.log(userId);
 
 
@@ -25,11 +27,9 @@ async function displayData(media, name, photographers) {
     };
 
     // media.forEach((item) => {
-    //     console.log(item);
+    //     // console.log(item);
     // })
-    media.onfocus = function () {
-        console.log('test focus');
-    }
+
     // SECTION MEDIA
     showMedia(media);
 
@@ -47,7 +47,7 @@ async function displayData(media, name, photographers) {
     const picture = document.querySelector('.picture');
     const modalLightbox = document.getElementById("body-container");
 
-    // OPEN MODAL
+    // OPEN LIGHTBOX_MODAL
     function displayModalLightbox() {
         modalLightbox.style.display = "block";
         shadow.style.display = 'block';
@@ -55,7 +55,7 @@ async function displayData(media, name, photographers) {
         previewBox.style.outline = 'none';
     }
 
-    // CLOSE MODAL
+    // CLOSE LIGHTBOX_MODAL
     function closeModalLightbox() {
         modalLightbox.style.display = "none";
         shadow.style.display = 'none';
@@ -63,6 +63,7 @@ async function displayData(media, name, photographers) {
 
     closeIcon.onclick = () => {
         closeModalLightbox();
+        mediaLightboxControls();
         mediaLightbox();
     };
 
@@ -77,49 +78,135 @@ async function displayData(media, name, photographers) {
         // console.log(url);
     };
 
-    // gallery.addEventListener('keydown', (e) => {
-    //     console.log(e);
-    //     let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
-    //     // if (!isTabPressed) {
-    //     //     return;
-    //     // }
+    //LIGHTBOX KEYBOARD CONTROLS
+    function mediaLightboxControls() {
+        const galleryMedia = document.querySelectorAll('.mediaCard img');
+        previewBox.addEventListener('keydown', (e) => {
+            let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
+            let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
+            let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+            // let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
-    //     if (document.activeElement === logo) {
-    //         console.log('test focus');
-    //         e.preventDefault();
-    //     }
-    // });
+            // console.log(e);
 
+            if (isLeftPressed && prevBtn.style.display == 'block') {
+                prevBtn.onclick(e);
+            } else if (isRightPressed && nextBtn.style.display == 'block') {
+                nextBtn.onclick(e);
+            } else if (isEscapePressed) {
+                closeModalLightbox();
+                // galleryMedia[0].focus();
+            }
+        });
+
+        for (let i = 0; i < galleryMedia.length; i++) {
+            let newIndexControls = i;
+
+            galleryMedia[newIndexControls].onfocus = (e) => {
+                // let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+                // console.log(e.target);
+
+                e.target.addEventListener('keydown', (e) => {
+                    let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+                    console.log(e.target);
+
+                    if (isEnterPressed) {
+                        displayModalLightbox();
+                        console.log(e.target);
+                    }
+                })
+
+                if (e.target.localName == 'img') {
+                    showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
+                } else {
+                    showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
+                };
+                title.textContent = media[newIndexControls].title;
+
+                nextBtn.onclick = () => {
+                    newIndexControls++; // Increment newIndexControls value
+                    let keyImage = "image" in media[newIndexControls];
+
+                    if (keyImage) {
+                        showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
+                    } else {
+                        showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
+                    };
+                    title.textContent = media[newIndexControls].title;
+
+                    if (newIndexControls >= galleryMedia.length - 1) {
+                        nextBtn.style.display = 'none';
+                    } else {
+                        prevBtn.style.display = 'block';
+                    };
+                };
+
+                prevBtn.onclick = () => {
+                    newIndexControls--; // Decrement newIndexControls value
+                    let keyImage = "image" in media[newIndexControls];
+
+                    if (keyImage) {
+                        showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
+                    } else {
+                        showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
+                    };
+                    title.textContent = media[newIndexControls].title;
+
+                    if (newIndexControls == 0) {
+                        prevBtn.style.display = 'none';
+                    } else {
+                        nextBtn.style.display = 'block';
+                    };
+                };
+
+                // MOVE/REMOVE PREVIOUS_BUTTON
+                if (newIndexControls == 0) {
+                    prevBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'block';
+                };
+
+                // MOVE/REMOVE NEXT_BUTTON
+                if (newIndexControls >= galleryMedia.length - 1) {
+                    nextBtn.style.display = 'none';
+                } else {
+                    nextBtn.style.display = 'block';
+                }
+            }
+        }
+    };
+    mediaLightboxControls();
+
+
+    // LIGHTBOX CLICK
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
+        // console.log(gallery[0]);
 
         previewBox.addEventListener('keydown', (e) => {
             let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
             let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
             let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
             // console.log(e);
 
             if (isLeftPressed && prevBtn.style.display == 'block') {
-                prevBtn.onclick();
+                prevBtn.onclick(e);
             } else if (isRightPressed && nextBtn.style.display == 'block') {
-                nextBtn.onclick();
+                nextBtn.onclick(e);
             } else if (isEscapePressed) {
                 closeModalLightbox();
-            }    
+            }
         });
-
 
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
-
             gallery[newIndex].onclick = (e) => {
-                let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-
                 displayModalLightbox();
-                // console.log(e.target);          
+                // console.log(e.target);
 
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
@@ -177,8 +264,7 @@ async function displayData(media, name, photographers) {
                 } else {
                     nextBtn.style.display = 'block';
                 }
-            }            
-            // console.log(newIndex);                     
+            }
         }
     };
     mediaLightbox();
@@ -191,8 +277,8 @@ async function displayData(media, name, photographers) {
     photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
         .getUserLikeBannerDOM();
 
-    // COUNT LIKES
 
+    // COUNT LIKES
     function countLike() {
         const displayLike = document.querySelectorAll('.info-like');
         const numberOfLike = document.querySelectorAll('.numberOfLike');
@@ -232,8 +318,9 @@ async function displayData(media, name, photographers) {
 
 
     // DROPDOWN
-
+    const menu = document.querySelector('.menu');
     const menuItem = document.querySelector('.menu-item');
+    const menuItemString = document.querySelector('.menu-item p');
     const dropdownMenu = document.querySelector('.dropdown');
     const arrowUp = document.querySelector('.fa-chevron-up');
     const arrowDown = document.querySelector('.fa-chevron-down');
@@ -243,32 +330,8 @@ async function displayData(media, name, photographers) {
     const popularityCategory = document.querySelector('.popularity');
     let isOpen = false;
 
-    menuItem.onfocus = function () {
-        // menuItem.style.outline = 'auto';
-        menuItem.addEventListener('keydown', (e) => {
-            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-            if (isEnterPressed) {
-                menuItem.style.outline = 'none';
-                openDropdown();
-                // dateCategory.focus();
-            }
-            if (isOpen && document.activeElement === menuItem) {
-                console.log('test focus');
-            }
-            // if(openDropdown){
-            //     dateCategory.focus();
-            //     e.preventDefault;
-            // }
-        })
-    }
 
-    menuItem.onblur = function () {
-        document.querySelector('.dropdown').style.display = 'none';
-        document.querySelector('.fa-chevron-down').style.display = 'block';
-        document.querySelector('.fa-chevron-up').style.display = 'none';
-    }
-
-
+    // OPEN DROPDOWN
     function openDropdown() {
 
         if (isOpen) {
@@ -276,48 +339,108 @@ async function displayData(media, name, photographers) {
             dropdownMenu.style.display = 'none';
             arrowDown.style.display = 'block';
             arrowUp.style.display = 'none';
+            menuItem.focus();
         } else {
             isOpen = true;
             dropdownMenu.style.display = 'block';
-            // dateCategory.focus();
             arrowUp.style.display = 'block';
             arrowDown.style.display = 'none';
         };
     }
 
-    menuItem.addEventListener('click', openDropdown);
+    // DROPDOWN KEYBOARD CONTROLS
+    menuItem.onfocus = function () {
+        menuItem.addEventListener('keydown', (e) => {
+            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
-    popularityCategory.addEventListener('click', () => {
-        media.sort((a, b) => {
-            return b.likes - a.likes;
-        });
-        showMedia(media);
-        mediaLightbox();
+            if (isEnterPressed) {
+                openDropdown();
+                dateCategory.focus();
+            }
+        })
+
+        titreCategory.onblur = function () {
+            dropdownMenu.style.display = 'none';
+            arrowDown.style.display = 'block';
+            arrowUp.style.display = 'none';
+        }
+
+        if (menuItemString.textContent == "Popularite") {
+            media.sort((a, b) => {
+                return b.likes - a.likes;
+            });
+            showMedia(media);
+            mediaLightbox();
+        }
+        if (menuItemString.textContent == "Date") {
+            media.sort((a, b) => {
+                return new Date(a.date) - new Date(b.date);
+            });
+            showMedia(media);
+            mediaLightbox();
+        }
+        if (menuItemString.textContent == "Titre") {
+            media.sort((a, b) => a.title.localeCompare(b.title));
+            showMedia(media);
+            mediaLightbox();
+        }
+    }
+
+    categories.forEach(category => {
+        category.addEventListener('keydown', (e) => {
+            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+
+            if (isEnterPressed) {
+                let menuItemText = menuItemString.textContent;
+                menuItemString.textContent = e.currentTarget.textContent;
+                e.currentTarget.textContent = menuItemText;
+                openDropdown();
+            }
+        })
     })
 
-    dateCategory.addEventListener('click', () => {
-        media.sort((a, b) => {
-            return new Date(a.date) - new Date(b.date);
-        });
-        showMedia(media);
-        mediaLightbox();
-    })
+    
+    // DROPDOWN CLICK
+    menuItem.addEventListener('click', () => {
+        openDropdown();
 
-    titreCategory.addEventListener('click', () => {
-        media.sort((a, b) => a.title.localeCompare(b.title));
-        showMedia(media);
-        mediaLightbox();
-    })
+        popularityCategory.addEventListener('click', () => {
+            if (menuItemString.textContent == "Popularite") {
+                media.sort((a, b) => {
+                    return b.likes - a.likes;
+                });
+                showMedia(media);
+                mediaLightbox();
+            }
+        })
+
+        dateCategory.addEventListener('click', () => {
+            if (menuItemString.textContent == "Date") {
+                media.sort((a, b) => {
+                    return new Date(a.date) - new Date(b.date);
+                });
+                showMedia(media);
+                mediaLightbox();
+            }
+        })
+
+        titreCategory.addEventListener('click', () => {
+            if (menuItemString.textContent == "Titre") {
+                media.sort((a, b) => a.title.localeCompare(b.title));
+                showMedia(media);
+                mediaLightbox();
+            }
+        })
+    });
 
     categories.forEach(category => {
         category.addEventListener('click', (e) => {
-            let menuItemText = menuItem.textContent;
-            menuItem.textContent = e.currentTarget.textContent;
+            let menuItemText = menuItemString.textContent;
+            menuItemString.textContent = e.currentTarget.textContent;
             e.currentTarget.textContent = menuItemText;
             openDropdown();
         })
     })
-
 };
 
 
