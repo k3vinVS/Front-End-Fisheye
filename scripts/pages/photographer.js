@@ -33,19 +33,19 @@ async function displayData(media, name, photographers) {
     // SECTION MEDIA
     showMedia(media);
 
+
+
     // LIGHTBOX
 
     //Selecting all required elements
     const title = document.querySelector('.title'),
         previewBox = document.querySelector('.preview-box'),
-        // previewImg = previewBox.querySelector('img'),
-        // previewVideo = previewBox.querySelector('video'),
         closeIcon = previewBox.querySelector('.icon'),
-        shadow = document.querySelector('.shadow');
-    const prevBtn = document.querySelector('.prev');
-    const nextBtn = document.querySelector('.next');
-    const picture = document.querySelector('.picture');
-    const modalLightbox = document.getElementById("body-container");
+        shadow = document.querySelector('.shadow'),
+        prevBtn = document.querySelector('.prev'),
+        nextBtn = document.querySelector('.next'),
+        picture = document.querySelector('.picture'),
+        modalLightbox = document.getElementById("body-container");
 
     // OPEN LIGHTBOX_MODAL
     function displayModalLightbox() {
@@ -63,8 +63,8 @@ async function displayData(media, name, photographers) {
 
     closeIcon.onclick = () => {
         closeModalLightbox();
-        mediaLightboxControls();
         mediaLightbox();
+        mediaLightboxControls();
     };
 
 
@@ -78,45 +78,44 @@ async function displayData(media, name, photographers) {
         // console.log(url);
     };
 
+    previewBox.addEventListener('keydown', (e) => {
+        const logo = document.querySelector('.logo');
+        let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
+        let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
+        let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+        let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
-    //LIGHTBOX KEYBOARD CONTROLS
+        // console.log(logo);
+
+        if (isLeftPressed && prevBtn.style.display == 'block') {
+            prevBtn.onclick();
+        } else if (isRightPressed && nextBtn.style.display == 'block') {
+            nextBtn.onclick();
+        } else if (isEscapePressed) {
+            closeModalLightbox();
+            mediaLightbox();
+            mediaLightboxControls();
+        }
+    });
+
+    // LIGHTBOX MODAL KEYBOARD CONTROLS
     function mediaLightboxControls() {
-        const galleryMedia = document.querySelectorAll('.mediaCard img');
-        previewBox.addEventListener('keydown', (e) => {
-            let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
-            let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
-            let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
-            // let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+        const gallery = document.querySelectorAll('.mediaCard');
+        const imgLightbox = document.querySelector('.img-lightbox');
 
-            // console.log(e);
-
-            if (isLeftPressed && prevBtn.style.display == 'block') {
-                prevBtn.onclick(e);
-            } else if (isRightPressed && nextBtn.style.display == 'block') {
-                nextBtn.onclick(e);
-            } else if (isEscapePressed) {
-                closeModalLightbox();
-                // galleryMedia[0].focus();
-            }
-        });
-
-        for (let i = 0; i < galleryMedia.length; i++) {
+        for (let i = 0; i < gallery.length; i++) {
             let newIndexControls = i;
 
-            galleryMedia[newIndexControls].onfocus = (e) => {
-                // let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-                // console.log(e.target);
+            gallery[newIndexControls].addEventListener('keydown', (e) => {
+                let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+                let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
+                let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
+                let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
 
-                e.target.addEventListener('keydown', (e) => {
-                    let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
+                if (isEnterPressed) {
+                    displayModalLightbox();
                     console.log(e.target);
-
-                    if (isEnterPressed) {
-                        displayModalLightbox();
-                        console.log(e.target);
-                    }
-                })
-
+                }
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                 } else {
@@ -132,10 +131,11 @@ async function displayData(media, name, photographers) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                     } else {
                         showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
+                        picture.focus();
                     };
                     title.textContent = media[newIndexControls].title;
 
-                    if (newIndexControls >= galleryMedia.length - 1) {
+                    if (newIndexControls >= gallery.length - 1) {
                         nextBtn.style.display = 'none';
                     } else {
                         prevBtn.style.display = 'block';
@@ -150,6 +150,7 @@ async function displayData(media, name, photographers) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                     } else {
                         showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
+                        console.log('test video');
                     };
                     title.textContent = media[newIndexControls].title;
 
@@ -168,42 +169,25 @@ async function displayData(media, name, photographers) {
                 };
 
                 // MOVE/REMOVE NEXT_BUTTON
-                if (newIndexControls >= galleryMedia.length - 1) {
+                if (newIndexControls >= gallery.length - 1) {
                     nextBtn.style.display = 'none';
                 } else {
                     nextBtn.style.display = 'block';
                 }
-            }
+            })
         }
     };
     mediaLightboxControls();
 
-
-    // LIGHTBOX CLICK
+    // LIGHTBOX MODAL CLICK
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
         // console.log(gallery[0]);
 
-        previewBox.addEventListener('keydown', (e) => {
-            let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
-            let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
-            let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
-            let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-
-            // console.log(e);
-
-            if (isLeftPressed && prevBtn.style.display == 'block') {
-                prevBtn.onclick(e);
-            } else if (isRightPressed && nextBtn.style.display == 'block') {
-                nextBtn.onclick(e);
-            } else if (isEscapePressed) {
-                closeModalLightbox();
-            }
-        });
-
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
+            //LIGHTBOX CLICK
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
                 // console.log(e.target);
@@ -399,7 +383,7 @@ async function displayData(media, name, photographers) {
         })
     })
 
-    
+
     // DROPDOWN CLICK
     menuItem.addEventListener('click', () => {
         openDropdown();
