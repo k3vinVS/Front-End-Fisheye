@@ -259,7 +259,7 @@ body {
   display: flex;
   justify-content: space-between;
   width: 218px;
-  margin: 20px auto auto 1rem;
+  margin: 20px auto auto 100px;
 }
 
 .liste p {
@@ -318,7 +318,6 @@ body {
 .category {
   cursor: pointer;
 }
-
 
 /* ------------------------------------ PHOTOGRAPHER MEDIA  ------------------------------------ */
 
@@ -807,9 +806,9 @@ form textarea {
 
   /*----- DROPDOWN -----*/
 
-  nav {
-    margin: 0.63rem 1rem;
-  }
+  .liste {
+    margin: 20px auto auto 1rem;
+  
 
   /*----- MEDIA -----*/
 

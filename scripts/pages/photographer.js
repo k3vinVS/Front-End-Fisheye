@@ -8,6 +8,8 @@ const userName = new URLSearchParams(queryString).get('name');
 
 
 async function displayData(media, name, photographers) {
+    // DOWNLOAD ELEMENTS API
+    // DOM ELEMENTS
     const photographerBanner = document.querySelector(".photograph-header");
     const photographersMedia = document.querySelector(".media");
     const photographersBannerLike = document.getElementById('like');
@@ -26,9 +28,6 @@ async function displayData(media, name, photographers) {
         });
     };
 
-    // media.forEach((item) => {
-    //     // console.log(item);
-    // })
 
     // SECTION MEDIA
     showMedia(media);
@@ -36,8 +35,7 @@ async function displayData(media, name, photographers) {
 
 
     // LIGHTBOX
-
-    //Selecting all required elements
+    // DOM ELEMENTS
     const title = document.querySelector('.title'),
         previewBox = document.querySelector('.preview-box'),
         closeIcon = previewBox.querySelector('.icon'),
@@ -46,8 +44,9 @@ async function displayData(media, name, photographers) {
         nextBtn = document.querySelector('.next'),
         picture = document.querySelector('.picture'),
         modalLightbox = document.getElementById("body-container");
+    const videoPlay = document.querySelector('video');
 
-    // OPEN LIGHTBOX_MODAL
+    // OPEN LIGHTBOX_MODAL 
     function displayModalLightbox() {
         modalLightbox.style.display = "block";
         shadow.style.display = 'block';
@@ -67,7 +66,7 @@ async function displayData(media, name, photographers) {
         mediaLightboxControls();
     };
 
-
+    //LIGHTBOX LOAD ELEMENTS
     function showLightbox(type, url) {
         picture.innerHTML = type == 'img'
             ? `<img src="${url}" alt="" />`
@@ -78,14 +77,13 @@ async function displayData(media, name, photographers) {
         // console.log(url);
     };
 
+
+    // LIGHTBOX MODAL KEYBOARD CONTROLS
     previewBox.addEventListener('keydown', (e) => {
-        const logo = document.querySelector('.logo');
         let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
         let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
         let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
         let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
-
-        // console.log(logo);
 
         if (isLeftPressed && prevBtn.style.display == 'block') {
             prevBtn.onclick();
@@ -95,13 +93,13 @@ async function displayData(media, name, photographers) {
             closeModalLightbox();
             mediaLightbox();
             mediaLightboxControls();
+            menuItem.focus();
         }
     });
 
-    // LIGHTBOX MODAL KEYBOARD CONTROLS
+    // LIGHTBOX KEYBOARD CONTROLS
     function mediaLightboxControls() {
         const gallery = document.querySelectorAll('.mediaCard');
-        const imgLightbox = document.querySelector('.img-lightbox');
 
         for (let i = 0; i < gallery.length; i++) {
             let newIndexControls = i;
@@ -110,12 +108,13 @@ async function displayData(media, name, photographers) {
                 let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
                 let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
                 let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
-                let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
+                let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39
 
                 if (isEnterPressed) {
                     displayModalLightbox();
-                    console.log(e.target);
+                    // console.log(e.target);
                 }
+
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                 } else {
@@ -131,7 +130,6 @@ async function displayData(media, name, photographers) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                     } else {
                         showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
-                        picture.focus();
                     };
                     title.textContent = media[newIndexControls].title;
 
@@ -150,7 +148,6 @@ async function displayData(media, name, photographers) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                     } else {
                         showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
-                        console.log('test video');
                     };
                     title.textContent = media[newIndexControls].title;
 
@@ -174,20 +171,30 @@ async function displayData(media, name, photographers) {
                 } else {
                     nextBtn.style.display = 'block';
                 }
+
+                // videoPlay.onfocus = () => {
+                //     if (isEnterPressed) {
+                //         console.log('test video');
+                //     }
+                //     console.log('test focus');
+                // }
             })
         }
     };
-    mediaLightboxControls();
+    mediaLightboxControls(); // CALL FUNCTION
 
-    // LIGHTBOX MODAL CLICK
+
+    // LIGHTBOX CLICK
     function mediaLightbox() {
         const gallery = document.querySelectorAll('.mediaCard');
+        const videoPlay = document.querySelector(' video');
+        const videoSource = document.querySelector('source');
+        const videoFocus = document.querySelector('.picture video');
         // console.log(gallery[0]);
-
+        
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
-            //LIGHTBOX CLICK
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
                 // console.log(e.target);
@@ -196,6 +203,7 @@ async function displayData(media, name, photographers) {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
+                    videoFocus.play();
                 };
                 title.textContent = media[newIndex].title;
 
@@ -251,11 +259,10 @@ async function displayData(media, name, photographers) {
             }
         }
     };
-    mediaLightbox();
+    mediaLightbox(); // CALL FUNCTION
 
 
     // BANNER LIKE / PRICE
-
     // LIKE
     let sumLike = media.reduce((a, b) => a + b.likes, 0);
     photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
@@ -296,12 +303,13 @@ async function displayData(media, name, photographers) {
     };
 
 
-    // MODAL PROFIL
+    // MODAL CONTACT PROFIL
     document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
 
 
 
     // DROPDOWN
+    // DOM ELEMENTS
     const menu = document.querySelector('.menu');
     const menuItem = document.querySelector('.menu-item');
     const menuItemString = document.querySelector('.menu-item p');
@@ -355,6 +363,7 @@ async function displayData(media, name, photographers) {
             });
             showMedia(media);
             mediaLightbox();
+            mediaLightboxControls();
         }
         if (menuItemString.textContent == "Date") {
             media.sort((a, b) => {
@@ -362,11 +371,13 @@ async function displayData(media, name, photographers) {
             });
             showMedia(media);
             mediaLightbox();
+            mediaLightboxControls();
         }
         if (menuItemString.textContent == "Titre") {
             media.sort((a, b) => a.title.localeCompare(b.title));
             showMedia(media);
             mediaLightbox();
+            mediaLightboxControls();
         }
     }
 
@@ -395,6 +406,7 @@ async function displayData(media, name, photographers) {
                 });
                 showMedia(media);
                 mediaLightbox();
+                mediaLightboxControls();
             }
         })
 
@@ -405,6 +417,7 @@ async function displayData(media, name, photographers) {
                 });
                 showMedia(media);
                 mediaLightbox();
+                mediaLightboxControls();
             }
         })
 
@@ -413,6 +426,7 @@ async function displayData(media, name, photographers) {
                 media.sort((a, b) => a.title.localeCompare(b.title));
                 showMedia(media);
                 mediaLightbox();
+                mediaLightboxControls();
             }
         })
     });
