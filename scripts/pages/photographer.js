@@ -108,7 +108,7 @@ async function displayData(media, name, photographers) {
                 let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
                 let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
                 let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
-                let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39
+                let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
 
                 if (isEnterPressed) {
                     displayModalLightbox();
