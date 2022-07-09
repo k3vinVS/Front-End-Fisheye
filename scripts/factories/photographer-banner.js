@@ -1,5 +1,5 @@
 function photographerBannerFactory(data) {
-    const { id, name, portrait, city, country, price, tagline } = data;
+    const { id, name, portrait, city, country, price, tagline, alttext } = data;
     // console.log(data);
     
     const pictureBanner = `assets/photographers/ID_Photos/${portrait}`;
@@ -19,10 +19,10 @@ function photographerBannerFactory(data) {
                 <button class="contact_button" onclick="displayModal()" alt="Contact Me" aria-label="Contactez moi">Contactez-moi</button>
             </div>
             <div class="profil-photographers">
-                <img src="${pictureBanner}" alt="${name}" aria-label="Photo de profil" />
+                <img src="${pictureBanner}" alt="${alttext}" aria-label="Photo de profil" />
             </div>          
             `;
         return divHtml;
     }
-    return { id, name, portrait, city, country, price, tagline, getUserBannerDOM };
+    return { id, name, portrait, city, country, price, tagline, alttext, getUserBannerDOM };
 };

@@ -70,7 +70,7 @@ async function displayData(media, name, photographers) {
     function showLightbox(type, url) {
         picture.innerHTML = type == 'img'
             ? `<img src="${url}" alt="" />`
-            : `<video preload="auto" controls>
+            : `<video preload="auto" autoplay>
         <source src="${url}" type="video/webm" alt="" />
         <source src="${url}" type="video/mp4" alt="" />
         </video>`;
@@ -203,7 +203,6 @@ async function displayData(media, name, photographers) {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
-                    videoFocus.play();
                 };
                 title.textContent = media[newIndex].title;
 

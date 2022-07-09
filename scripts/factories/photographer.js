@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { id, name, portrait, city, country, tagline, price } = data;
+    const { id, name, portrait, city, country, tagline, price, alttext } = data;
     // console.log(data);
 
     const picture = `./assets/photographers/ID_Photos/${portrait}`;
@@ -8,7 +8,7 @@ function photographerFactory(data) {
         let articleHtml = `
         <article>
         <a href="photographer.html?id=${id}&name=${name}" class="profil">
-        <img src="${picture}" alt="${name}"/>
+        <img src="${picture}" alt="${alttext}"/>
             <h2>${name}</h2>
         </a>
         <p id="location">${city}, ${country}</p>
@@ -18,6 +18,6 @@ function photographerFactory(data) {
         `;
         return articleHtml;
     }
-    return { name, picture, city, country, tagline, price, getUserCardDOM }
+    return { name, picture, city, country, tagline, price, alttext, getUserCardDOM }
 };
 
