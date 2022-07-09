@@ -191,7 +191,7 @@ async function displayData(media, name, photographers) {
         const videoSource = document.querySelector('source');
         const videoFocus = document.querySelector('.picture video');
         // console.log(gallery[0]);
-        
+
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
@@ -304,8 +304,10 @@ async function displayData(media, name, photographers) {
 
 
     // MODAL CONTACT PROFIL
-    document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
-
+    // document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
+    photographers.forEach((photographer) => {
+        document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
+    })
 
 
     // DROPDOWN
