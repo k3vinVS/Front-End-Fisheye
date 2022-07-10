@@ -169,6 +169,7 @@ function validForm() {
 	console.log('Prénom: ' + inputFirstName.value);
 	console.log('Nom: ' + inputLastName.value);
 	console.log('Email: ' + inputEmail.value);
+	console.log('Message: ' + inputMessage.value);
 	form.reset();
 	closeModal();
 }
@@ -202,4 +203,3 @@ form.addEventListener('submit', function (e) {
 		return false;
 	}
 });
-
