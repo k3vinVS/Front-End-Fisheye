@@ -171,13 +171,6 @@ async function displayData(media, name, photographers) {
                 } else {
                     nextBtn.style.display = 'block';
                 }
-
-                // videoPlay.onfocus = () => {
-                //     if (isEnterPressed) {
-                //         console.log('test video');
-                //     }
-                //     console.log('test focus');
-                // }
             })
         }
     };
@@ -358,7 +351,7 @@ async function displayData(media, name, photographers) {
             arrowUp.style.display = 'none';
         }
 
-        if (menuItemString.textContent == "Popularite") {
+        if (menuItemString.textContent == "Popularité") {
             media.sort((a, b) => {
                 return b.likes - a.likes;
             });
@@ -401,7 +394,7 @@ async function displayData(media, name, photographers) {
         openDropdown();
 
         popularityCategory.addEventListener('click', () => {
-            if (menuItemString.textContent == "Popularite") {
+            if (menuItemString.textContent == "Popularité") {
                 media.sort((a, b) => {
                     return b.likes - a.likes;
                 });
