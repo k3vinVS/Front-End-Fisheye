@@ -23,8 +23,8 @@ function photographerMediaFactory(data, name, index) {
         <div class="media-card">
                 <span class="mediaCard">
                     <video tabindex='0' preload="auto" role='application' controls muted controlslist="nodownload, nofullscreen" aria-label='Vidéo'>
-                        <source src="${mediaVideo}" type="video/webm" aria-label="Vidéo"/>
-                        <source src="${mediaVideo}" type="video/mp4" aria-label="Vidéo"/>
+                        <source src="${mediaVideo}" type="video/webm"/>
+                        <source src="${mediaVideo}" type="video/mp4"/>
                     </video>
                 </span>
             <div class="info">
