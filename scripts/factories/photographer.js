@@ -1,10 +1,11 @@
 function photographerFactory(data) {
-    const { id, name, portrait, city, country, tagline, price, alttext } = data;
-    // console.log(data);
+    const { id, name, portrait, city, country, tagline, price, alttext } = data; // Download data in API
 
-    const picture = `./assets/photographers/ID_Photos/${portrait}`;
+    const picture = `./assets/photographers/ID_Photos/${portrait}`; // Download profil image in directory
 
     function getUserCardDOM() {
+
+        // Profil photographer card
         let articleHtml = `
         <article>
         <a href="photographer.html?id=${id}&name=${name}" class="profil">
@@ -18,6 +19,6 @@ function photographerFactory(data) {
         `;
         return articleHtml;
     }
-    return { name, picture, city, country, tagline, price, alttext, getUserCardDOM }
+    return { name, picture, city, country, tagline, price, alttext, getUserCardDOM } // Return data and card
 };
 

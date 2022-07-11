@@ -1,13 +1,14 @@
 function photographerMediaFactory(data, name, index) {
 
-    const { id, photographerId, title, image, video, likes, date, price } = data;
+    const { id, photographerId, title, image, video, likes, date, price } = data; // Download data in API
 
-    const mediaPicture = `./assets/images/Sample_Photos/${name}/${image}`;
-    const mediaVideo = `./assets/images/Sample_Photos/${name}/${video}`;
+    const mediaPicture = `./assets/images/Sample_Photos/${name}/${image}`; // Download images in directory
+    const mediaVideo = `./assets/images/Sample_Photos/${name}/${video}`; // Download videos in directory
 
     function getUserMediaDOM() {
 
-        let articleHtml = `
+        // Image card
+        let articleImageHtml = `
         <div class="media-card">
         <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image" role='img' aria-label="Image" tabindex='0' /></span>                 
             <div class="info">
@@ -19,6 +20,8 @@ function photographerMediaFactory(data, name, index) {
             </div>
         </div>             
             `;
+
+        // Video card
         let articleVideoHtml = `
         <div class="media-card">
                 <span class="mediaCard">
@@ -37,14 +40,13 @@ function photographerMediaFactory(data, name, index) {
         </div>          
             `;
 
+        // Choose image or video cards
         if (data.image) {
-            return articleHtml;
+            return articleImageHtml;
         } else {
             return articleVideoHtml;
         }
-
-        // return (articleHtml, articleVideoHtml);
     }
 
-    return { id, photographerId, title, image, video, likes, date, price, getUserMediaDOM };
+    return { id, photographerId, title, image, video, likes, date, price, getUserMediaDOM }; // Return data and card
 };

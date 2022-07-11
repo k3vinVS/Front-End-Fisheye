@@ -1,23 +1,25 @@
 function photographerLikeBannerFactory(numLike) {
-    // console.log(numLike);
-        
+
     function getUserLikeBannerDOM() {
-        let likeBannerHtml = 
-        `<p>${numLike}<i class="fa fa-solid fa-heart"></i></p>`;
+
+        // Number of likes
+        let likeBannerHtml =
+            `<p>${numLike}<i class="fa fa-solid fa-heart"></i></p>`;
         return likeBannerHtml;
-    }  
-    return { numLike, getUserLikeBannerDOM };
+    }
+    return { numLike, getUserLikeBannerDOM }; // Return data and card
 };
 
 
 function photographerPriceBannerFactory(data) {
-    const { price } = data; 
-    // console.log(data);
+    const { price } = data; // Download data in API
 
-    function getUserPriceBannerDOM() {        
-        let priceBannerHtml = 
-        `<p>${price}€ / jour</p>`;
+    function getUserPriceBannerDOM() {
+
+        // Price of photographers
+        let priceBannerHtml =
+            `<p>${price}€ / jour</p>`;
         return priceBannerHtml;
-    }  
-    return { price, getUserPriceBannerDOM };
+    }
+    return { price, getUserPriceBannerDOM }; // Return data and card
 };

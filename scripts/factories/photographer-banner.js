@@ -1,10 +1,12 @@
 function photographerBannerFactory(data) {
-    const { id, name, portrait, city, country, price, tagline, alttext } = data;
+    const { id, name, portrait, city, country, price, tagline, alttext } = data; // Download data in API
     // console.log(data);
-    
-    const pictureBanner = `assets/photographers/ID_Photos/${portrait}`;
-    
+
+    const pictureBanner = `assets/photographers/ID_Photos/${portrait}`; // Download profil image in directory
+
     function getUserBannerDOM() {
+
+        // Profil card
         let divHtml = `
             <div id="photograph-description">
                 <header>
@@ -24,5 +26,5 @@ function photographerBannerFactory(data) {
             `;
         return divHtml;
     }
-    return { id, name, portrait, city, country, price, tagline, alttext, getUserBannerDOM };
+    return { id, name, portrait, city, country, price, tagline, alttext, getUserBannerDOM }; // Return data and card
 };
