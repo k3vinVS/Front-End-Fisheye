@@ -8,7 +8,7 @@ const inputEmail = document.getElementById('email');
 const inputMessage = document.getElementById('message');
 const shadowModal = document.querySelector('.shadow-modal');
 
-
+// Open modal
 function displayModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
@@ -16,12 +16,14 @@ function displayModal() {
 	inputFirstName.focus();
 }
 
+// Close modal
 function closeModal() {
 	const modal = document.getElementById("contact_modal");
 	modal.style.display = "none";
 	shadowModal.style.display = 'none';
 }
 
+// Modal keyboard controls
 modal.addEventListener('keydown', (e) => {
 	let isTabPressed = e.key === 'Tab' || e.keyCode === 9;
 	let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
@@ -41,13 +43,13 @@ modal.addEventListener('keydown', (e) => {
 
 })
 
-// Enlève les bordures des inputs valide
+// Removes borders from valid inputs
 function validInput(input) {
 	input.style.border = 'none';
 }
 
 
-// Invalide d'une bordure rouge les inputs du formulaire
+// Invalidates the inputs of the form with a red border
 function invalidInput(input) {
 	input.style.border = '2px solid red';
 }
@@ -56,13 +58,12 @@ function invalidInput(input) {
 
 // Modal firstName Input ---------------------
 
-// Ecoute de l'input du prénom
+// Listening to the input of the first name
 inputFirstName.addEventListener('input', function () {
 	validFirstName(this);
-	// console.log(inputFirstName.value);
 });
 
-// Vérifie que l'input est renseigné, et le regex permet d'autoriser certains caractères, avec un minimum de 2 lettres (mets de côté les chiffres)
+// Verifies that the input is filled in, and the regex allows to allow certain characters, with a minimum of 2 letters (set aside the numbers)
 const validFirstName = function (acceptFirstName) {
 
 	let small = inputFirstName.nextElementSibling;
@@ -85,13 +86,13 @@ const validFirstName = function (acceptFirstName) {
 
 // Modal lastName Input -----------------------
 
-// Ecoute de l'input du nom
+// Listening to the input of the lastName
 inputLastName.addEventListener('input', function () {
 	validLastName(this);
 	// console.log(inputLastName.value);
 });
 
-// Vérifie que l'input est renseigné, et le regex permet d'autoriser certains caractères, avec un minimum de 2 lettres (mets de côté les chiffres)
+// Verifies that the input is filled in, and the regex allows to allow certain characters, with a minimum of 2 letters (set aside the numbers)
 const validLastName = function (acceptLastName) {
 	let small = inputLastName.nextElementSibling;
 	let lastNameRegExp = new RegExp(
@@ -113,13 +114,13 @@ const validLastName = function (acceptLastName) {
 
 // Modal Email Input -------------------------------
 
-// Ecoute de l'input de l'adresse email
+// Listening to the input of the email address
 inputEmail.addEventListener('change', function () {
 	validEmail(this);
 	// console.log(inputEmail.value);
 });
 
-// Vérifie que l'input est renseigné, et le regex permet d'autoriser un certain nombre de caractères et l'obligation de symboles (comme toutes les adresses emails)
+// Verifies that the input is filled in, and the regex allows to allow a certain number of characters and the obligation of symbols (like all email addresses)
 const validEmail = function (acceptEmail) {
 	let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
 	let small = inputEmail.nextElementSibling;
@@ -140,10 +141,12 @@ const validEmail = function (acceptEmail) {
 
 // Modal Message Input -------------------------------
 
+// Listening to the input of the message input
 inputMessage.addEventListener('input', function () {
 	validMessage(this);
 });
 
+// Verifies that the input is filled in
 const validMessage = function (acceptMessage) {
 	let small = inputMessage.nextElementSibling;
 
@@ -161,6 +164,7 @@ const validMessage = function (acceptMessage) {
 
 // Valid Form --------------------------------------
 
+// for the validation of the form, resets the inputs, retrieves the information indicated in the console and closes the modal
 function validForm() {
 	let small = document.querySelectorAll('small');
 	for (i = 0; i < small.length; i++) {
@@ -174,6 +178,7 @@ function validForm() {
 	closeModal();
 }
 
+// error function if not all inputs are filled in
 function errorForm() {
 	if (!validFirstName(inputFirstName) &&
 		!validLastName(inputLastName) &&
@@ -185,10 +190,11 @@ function errorForm() {
 
 }
 
+// listening to the form
 form.addEventListener('submit', function (e) {
 	e.preventDefault();
 
-	// Vérifie que les inputs sont remplis et valide
+	// Verifies that inputs are filled in and valid
 	if (
 		validFirstName(inputFirstName) &&
 		validLastName(inputLastName) &&

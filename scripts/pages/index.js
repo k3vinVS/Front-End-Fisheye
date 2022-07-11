@@ -1,3 +1,4 @@
+// Download datas of every photographers in API
 async function getPhotographers() {
     const { photographers } = await getPhotographDatas();
     return ({
@@ -5,6 +6,7 @@ async function getPhotographers() {
     });
 };
 
+// Setting up photographers cards
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -13,8 +15,8 @@ async function displayData(photographers) {
     });
 };
 
+// Setting up datas and cards of every photographers
 async function init() {
-    // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
 };
