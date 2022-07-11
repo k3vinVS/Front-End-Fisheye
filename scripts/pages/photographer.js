@@ -1,14 +1,11 @@
-const queryString = window.location.search;
-const userId = new URLSearchParams(queryString).get('id');
-const userName = new URLSearchParams(queryString).get('name');
-// let isUpPressed = e.key === 'ArrowUp' || e.keyCode == 38;
-// let isDownPressed = e.key === 'ArrowDown' || e.keyCode == 40;
-// let isEscapePressed = e.key === 'escape' || e.keyCode == 27;
-// console.log(userId);
+const queryString = window.location.search; // retrieves information from the search bar
+const userId = new URLSearchParams(queryString).get('id'); // retrieves the "id" in the search bar
+const userName = new URLSearchParams(queryString).get('name'); // retrieves the name from the search bar
 
 
 async function displayData(media, name, photographers) {
-    // DOWNLOAD ELEMENTS API
+    // DOWNLOAD ELEMENTS API -------------------------------
+
     // DOM ELEMENTS
     const photographerBanner = document.querySelector(".photograph-header");
     const photographersMedia = document.querySelector(".media");
@@ -21,6 +18,7 @@ async function displayData(media, name, photographers) {
             .getUserBannerDOM();
     };
 
+    // SECTION MEDIAS OF PHOTOGRAPHERS
     function showMedia(mediaArray) {
         photographersMedia.innerHTML = '';
         mediaArray.forEach((data) => {
@@ -29,12 +27,13 @@ async function displayData(media, name, photographers) {
     };
 
 
-    // SECTION MEDIA
+    // SECTION MEDIA -------------------------------
     showMedia(media);
 
 
 
-    // LIGHTBOX
+    // LIGHTBOX -------------------------------
+
     // DOM ELEMENTS
     const title = document.querySelector('.title'),
         previewBox = document.querySelector('.preview-box'),
@@ -66,7 +65,7 @@ async function displayData(media, name, photographers) {
         mediaLightboxControls();
     };
 
-    //LIGHTBOX LOAD ELEMENTS
+    // LIGHTBOX LOAD ELEMENTS
     function showLightbox(type, url) {
         picture.innerHTML = type == 'img'
             ? `<img src="${url}" alt="" />`
@@ -74,7 +73,6 @@ async function displayData(media, name, photographers) {
         <source src="${url}" type="video/webm" alt="" />
         <source src="${url}" type="video/mp4" alt="" />
         </video>`;
-        // console.log(url);
     };
 
 
@@ -110,16 +108,18 @@ async function displayData(media, name, photographers) {
                 let isLeftPressed = e.key === 'ArrowLeft' || e.keyCode == 37;
                 let isRightPressed = e.key === 'ArrowRight' || e.keyCode == 39;
 
+                // Open lightbox
                 if (isEnterPressed) {
                     displayModalLightbox();
-                    // console.log(e.target);
                 }
 
+                // Choice of media: Image or Video
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndexControls].video);
                 };
+                // Title of media
                 title.textContent = media[newIndexControls].title;
 
                 nextBtn.onclick = () => {
@@ -133,6 +133,7 @@ async function displayData(media, name, photographers) {
                     };
                     title.textContent = media[newIndexControls].title;
 
+                    // if it's the last media, the right arrow disappears
                     if (newIndexControls >= gallery.length - 1) {
                         nextBtn.style.display = 'none';
                     } else {
@@ -151,6 +152,7 @@ async function displayData(media, name, photographers) {
                     };
                     title.textContent = media[newIndexControls].title;
 
+                    // If it's the first media, the left arrow disappears
                     if (newIndexControls == 0) {
                         prevBtn.style.display = 'none';
                     } else {
@@ -183,26 +185,27 @@ async function displayData(media, name, photographers) {
         const videoPlay = document.querySelector(' video');
         const videoSource = document.querySelector('source');
         const videoFocus = document.querySelector('.picture video');
-        // console.log(gallery[0]);
 
         for (let i = 0; i < gallery.length; i++) {
             let newIndex = i;
 
             gallery[newIndex].onclick = (e) => {
                 displayModalLightbox();
-                // console.log(e.target);
 
+                // Choice of media: Image or Video
                 if (e.target.localName == 'img') {
                     showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                 } else {
                     showLightbox('video', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].video);
                 };
+                // // Title of media
                 title.textContent = media[newIndex].title;
 
                 nextBtn.onclick = () => {
                     newIndex++; // Increment newIndex value
                     let keyImage = "image" in media[newIndex];
 
+                    // Choice of media: Image or Video
                     if (keyImage) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                     } else {
@@ -210,6 +213,7 @@ async function displayData(media, name, photographers) {
                     };
                     title.textContent = media[newIndex].title;
 
+                    // if it's the last media, the right arrow disappears
                     if (newIndex >= gallery.length - 1) {
                         nextBtn.style.display = 'none';
                     } else {
@@ -221,6 +225,7 @@ async function displayData(media, name, photographers) {
                     newIndex--; // Decrement newIndex value
                     let keyImage = "image" in media[newIndex];
 
+                    // Choice of media: Image or Video
                     if (keyImage) {
                         showLightbox('img', 'assets/images/Sample_Photos/' + name + '/' + media[newIndex].image);
                     } else {
@@ -228,6 +233,7 @@ async function displayData(media, name, photographers) {
                     };
                     title.textContent = media[newIndex].title;
 
+                    // If it's the first media, the left arrow disappears
                     if (newIndex == 0) {
                         prevBtn.style.display = 'none';
                     } else {
@@ -254,8 +260,10 @@ async function displayData(media, name, photographers) {
     mediaLightbox(); // CALL FUNCTION
 
 
-    // BANNER LIKE / PRICE
+    // BANNER LIKE / PRICE -------------------------------
+
     // LIKE
+    // displays the sum of likes
     let sumLike = media.reduce((a, b) => a + b.likes, 0);
     photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
         .getUserLikeBannerDOM();
@@ -263,10 +271,12 @@ async function displayData(media, name, photographers) {
 
     // COUNT LIKES
     function countLike() {
+        // DOM ELEMENTS
         const displayLike = document.querySelectorAll('.info-like');
         const numberOfLike = document.querySelectorAll('.numberOfLike');
         const likes = document.querySelectorAll('.dislikes');
 
+        // displays likes and dislikes in the media
         likes.forEach((like, index) => {
             like.addEventListener('click', () => {
                 let nbl = numberOfLike[index].textContent;
@@ -274,13 +284,11 @@ async function displayData(media, name, photographers) {
                     numberOfLike[index].textContent = parseInt(nbl) - 1;
                     let downLikeBanner = sumLike -= 1;
                     photographersBannerLike.innerHTML = photographerLikeBannerFactory(downLikeBanner).getUserLikeBannerDOM();
-                    // console.log(downLikeBanner);
 
                 } else if (like.classList.contains('likes')) {
                     numberOfLike[index].textContent = parseInt(nbl) + 1;
                     let upLike = sumLike += 1;
                     photographersBannerLike.innerHTML = photographerLikeBannerFactory(upLike).getUserLikeBannerDOM();
-                    // console.log(upLike);
                 }
             })
         });
@@ -289,20 +297,21 @@ async function displayData(media, name, photographers) {
 
 
     // PRICE
+    // displays the photographer's rate
     for (data of photographers) {
         photographersBannerPrice.innerHTML = photographerPriceBannerFactory(data)
             .getUserPriceBannerDOM();
     };
 
 
-    // MODAL CONTACT PROFIL
-    // document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
+    // MODAL CONTACT PROFIL -------------------------------
+    // Displays the photographer's name
     photographers.forEach((photographer) => {
         document.getElementById('modal-profil').innerHTML = `${photographer.name}`;
     })
 
 
-    // DROPDOWN
+    // DROPDOWN -------------------------------
     // DOM ELEMENTS
     const menu = document.querySelector('.menu');
     const menuItem = document.querySelector('.menu-item');
@@ -339,18 +348,21 @@ async function displayData(media, name, photographers) {
         menuItem.addEventListener('keydown', (e) => {
             let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
 
+            // Open dropdown
             if (isEnterPressed) {
                 openDropdown();
                 dateCategory.focus();
             }
         })
 
+        // disappearance of the dropdown
         titreCategory.onblur = function () {
             dropdownMenu.style.display = 'none';
             arrowDown.style.display = 'block';
             arrowUp.style.display = 'none';
         }
 
+        // media sorting
         if (menuItemString.textContent == "Popularité") {
             media.sort((a, b) => {
                 return b.likes - a.likes;
@@ -375,6 +387,7 @@ async function displayData(media, name, photographers) {
         }
     }
 
+    // swapping categories in the menuItem
     categories.forEach(category => {
         category.addEventListener('keydown', (e) => {
             let isEnterPressed = e.key === 'Enter' || e.keyCode == 13;
@@ -393,6 +406,7 @@ async function displayData(media, name, photographers) {
     menuItem.addEventListener('click', () => {
         openDropdown();
 
+        // media sorting
         popularityCategory.addEventListener('click', () => {
             if (menuItemString.textContent == "Popularité") {
                 media.sort((a, b) => {
@@ -425,6 +439,7 @@ async function displayData(media, name, photographers) {
         })
     });
 
+    // swapping categories in the menuItem
     categories.forEach(category => {
         category.addEventListener('click', (e) => {
             let menuItemText = menuItemString.textContent;
@@ -436,27 +451,25 @@ async function displayData(media, name, photographers) {
 };
 
 
-// MEDIA LIKES
+// MEDIA LIKES -------------------------------
+// Update the likes and dislikes heart
 function updateLike(e) {
-    // console.log(e.currentTarget);
     if (e.currentTarget.classList.contains('likes')) {
         e.currentTarget.classList.remove('likes');
         e.currentTarget.classList.add('dislikes');
-        // console.log('dislike');
     } else if (e.currentTarget.classList.contains('dislikes')) {
         e.currentTarget.classList.remove('dislikes');
         e.currentTarget.classList.add('likes');
-        // console.log('like');
     }
 }
 
 
-
+// initializing the content of the photographers' page
 async function initMedia() {
     const { photographers, media } = await getPhotographDatas(); // API
-    const usersInfo = media.filter((md) => md.photographerId == userId);
-    const userProfil = photographers.filter((photographer) => photographer.id == userId);
-    displayData(usersInfo, userName, userProfil, photographers, media);
+    const usersInfo = media.filter((md) => md.photographerId == userId); // filters each photographer's media
+    const userProfil = photographers.filter((photographer) => photographer.id == userId); // filters the photographer's data
+    displayData(usersInfo, userName, userProfil, photographers, media); // displays the photographer's data
 };
 
 initMedia();
