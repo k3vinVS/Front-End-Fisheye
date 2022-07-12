@@ -368,6 +368,7 @@ async function displayData(media, name, photographers) {
                 return b.likes - a.likes;
             });
             showMedia(media);
+            countLike();
             mediaLightbox();
             mediaLightboxControls();
         }
@@ -376,12 +377,14 @@ async function displayData(media, name, photographers) {
                 return new Date(a.date) - new Date(b.date);
             });
             showMedia(media);
+            countLike();
             mediaLightbox();
             mediaLightboxControls();
         }
         if (menuItemString.textContent == "Titre") {
             media.sort((a, b) => a.title.localeCompare(b.title));
             showMedia(media);
+            countLike();
             mediaLightbox();
             mediaLightboxControls();
         }
@@ -407,23 +410,25 @@ async function displayData(media, name, photographers) {
         openDropdown();
 
         // media sorting
-        popularityCategory.addEventListener('click', () => {
+        popularityCategory.addEventListener('click', (e) => {
             if (menuItemString.textContent == "Popularité") {
                 media.sort((a, b) => {
                     return b.likes - a.likes;
                 });
                 showMedia(media);
+                countLike();
                 mediaLightbox();
                 mediaLightboxControls();
             }
         })
 
-        dateCategory.addEventListener('click', () => {
+        dateCategory.addEventListener('click', (e) => {
             if (menuItemString.textContent == "Date") {
                 media.sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
                 });
                 showMedia(media);
+                countLike();
                 mediaLightbox();
                 mediaLightboxControls();
             }
@@ -433,8 +438,17 @@ async function displayData(media, name, photographers) {
             if (menuItemString.textContent == "Titre") {
                 media.sort((a, b) => a.title.localeCompare(b.title));
                 showMedia(media);
+                countLike();
                 mediaLightbox();
                 mediaLightboxControls();
+            }
+        })
+
+        window.addEventListener('click', () => {
+            if (document.activeElement != menuItem) {
+                dropdownMenu.style.display = 'none';
+                arrowDown.style.display = 'block';
+                arrowUp.style.display = 'none';
             }
         })
     });
@@ -461,6 +475,7 @@ function updateLike(e) {
         e.currentTarget.classList.remove('dislikes');
         e.currentTarget.classList.add('likes');
     }
+
 }
 
 
