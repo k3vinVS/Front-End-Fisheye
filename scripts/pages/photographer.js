@@ -265,6 +265,7 @@ async function displayData(media, name, photographers) {
     // LIKE
     // displays the sum of likes
     let sumLike = media.reduce((a, b) => a + b.likes, 0);
+    let totalLike = media.reduce((a, b) => a + b.likes, 0);
     photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike)
         .getUserLikeBannerDOM();
 
@@ -278,8 +279,9 @@ async function displayData(media, name, photographers) {
 
         // displays likes and dislikes in the media
         likes.forEach((like, index) => {
-            like.addEventListener('click', () => {
+            like.addEventListener('click', (e) => {
                 let nbl = numberOfLike[index].textContent;
+
                 if (like.classList.contains('dislikes')) {
                     numberOfLike[index].textContent = parseInt(nbl) - 1;
                     let downLikeBanner = sumLike -= 1;
@@ -287,11 +289,13 @@ async function displayData(media, name, photographers) {
 
                 } else if (like.classList.contains('likes')) {
                     numberOfLike[index].textContent = parseInt(nbl) + 1;
-                    let upLike = sumLike += 1;
-                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(upLike).getUserLikeBannerDOM();
+                    let upLikeBanner = sumLike += 1;
+                    photographersBannerLike.innerHTML = photographerLikeBannerFactory(upLikeBanner).getUserLikeBannerDOM();
                 }
             })
         });
+        let sumLike = media.reduce((a, b) => a + b.likes, 0);
+        photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike).getUserLikeBannerDOM();
     }
     countLike();
 
@@ -410,7 +414,7 @@ async function displayData(media, name, photographers) {
         openDropdown();
 
         // media sorting
-        popularityCategory.addEventListener('click', (e) => {
+        popularityCategory.addEventListener('click', () => {
             if (menuItemString.textContent == "Popularité") {
                 media.sort((a, b) => {
                     return b.likes - a.likes;
@@ -422,7 +426,7 @@ async function displayData(media, name, photographers) {
             }
         })
 
-        dateCategory.addEventListener('click', (e) => {
+        dateCategory.addEventListener('click', () => {
             if (menuItemString.textContent == "Date") {
                 media.sort((a, b) => {
                     return new Date(a.date) - new Date(b.date);
@@ -475,7 +479,7 @@ function updateLike(e) {
         e.currentTarget.classList.remove('dislikes');
         e.currentTarget.classList.add('likes');
     }
-
+    // photographersBannerLike.innerHTML = photographerLikeBannerFactory(sumLike).getUserLikeBannerDOM();
 }
 
 
