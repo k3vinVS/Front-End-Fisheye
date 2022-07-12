@@ -31,7 +31,6 @@ async function displayData(media, name, photographers) {
     showMedia(media);
 
 
-
     // LIGHTBOX -------------------------------
 
     // DOM ELEMENTS
@@ -279,7 +278,7 @@ async function displayData(media, name, photographers) {
 
         // displays likes and dislikes in the media
         likes.forEach((like, index) => {
-            like.addEventListener('click', (e) => {
+            like.addEventListener('click', () => {
                 let nbl = numberOfLike[index].textContent;
 
                 if (like.classList.contains('dislikes')) {
