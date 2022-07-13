@@ -64,20 +64,21 @@
     <!-- LIGHTBOX -->
     <div id="body-container">
       <div class="wrapper">
-        <div class="preview-box" tabindex="0">
+        <div class="preview-box" tabindex="0" aria-label="image closeup view">
           <div class="img-box">
-            <div class="slide prev" alt="image précédente">
-              <i class="fas fa-angle-left" aria-label="Image précédente"></i>
+            <div class="slide prev" alt="Previous image">
+              <i class="fas fa-angle-left"></i>
             </div>
-            <div class="slide next" alt="image suivante">
-              <i class="fas fa-angle-right" aria-label="Image suivante"></i>
+            <div class="slide next" alt="Next image">
+              <i class="fas fa-angle-right"></i>
             </div>
             <div class="img-lightbox">
               <div class="picture"></div>
               <span
                 class="icon fas fa-times"
-                alt="fermer la modale"
-                aria-label="Fermer la lightbox"
+                role="button"
+                alt="Close dialog"
+                aria-label="Close dialog"
               >
               </span>
               <div class="details">
@@ -91,7 +92,13 @@
     </div>
 
     <!-- MODAL CONTACT -->
-    <div id="contact_modal" aria-hidden="true" role="dialog" tabindex="-1">
+    <div
+      id="contact_modal"
+      aria-hidden="true"
+      role="dialog"
+      tabindex="-1"
+      aria-label="Contact me"
+    >
       <div class="modal">
         <header>
           <div id="header-form">
@@ -167,7 +174,7 @@
               type="message"
               id="message"
               alt="Message"
-              aria-label="Votre message"
+              aria-label="Your message"
               cols="36"
               rows="3"
               tabindex="4"
@@ -181,7 +188,7 @@
             class="contact_button"
             name="Send"
             alt="Send"
-            aria-label="Formulaire envoyé"
+            aria-label="Send"
             tabindex="5"
           >
             Envoyer

@@ -1,6 +1,7 @@
 // DOM ELEMENTS
-const form = document.querySelector('form');
+const modalContact = document.getElementById("contact_modal");
 const modal = document.querySelector('.modal');
+const form = document.querySelector('form');
 const closeButton = document.getElementById('close');
 const inputFirstName = document.getElementById('first');
 const inputLastName = document.getElementById('last');
@@ -10,16 +11,14 @@ const shadowModal = document.querySelector('.shadow-modal');
 
 // Open modal
 function displayModal() {
-	const modal = document.getElementById("contact_modal");
-	modal.style.display = "block";
+	modalContact.style.display = "block";
 	shadowModal.style.display = 'block';
 	inputFirstName.focus();
 }
 
 // Close modal
 function closeModal() {
-	const modal = document.getElementById("contact_modal");
-	modal.style.display = "none";
+	modalContact.style.display = "none";
 	shadowModal.style.display = 'none';
 }
 
