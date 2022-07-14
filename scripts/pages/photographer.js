@@ -42,8 +42,8 @@ async function displayData(media, name, photographers) {
         nextBtn = document.querySelector('.next'),
         picture = document.querySelector('.picture'),
         modalLightbox = document.getElementById("body-container");
-    const videoPlay = document.querySelector('video');
 
+    
     // OPEN LIGHTBOX_MODAL 
     function displayModalLightbox() {
         modalLightbox.style.display = "block";
