@@ -11,11 +11,11 @@ function photographerMediaFactory(data, name, index) {
         let articleImageHtml = `
         <div class="media-card">
         <span class="mediaCard"><img src="${mediaPicture}" alt="${title}" type="image" role='img' aria-label="Image" tabindex='0' /></span>                 
-            <div class="info">
+            <div class="info" role="Text">
                 <p class="info-title">${title}</p>
                 <span class="info-like">
                     <p class="numberOfLike">${likes}</p>
-                    <button class="dislikes" onclick="updateLike(${'event'})" aria-label="likes"></button>
+                    <button class="dislikes" onclick="updateLike(${'event'})" role="Image" aria-label="likes"></button>
                 </span>
             </div>
         </div>             

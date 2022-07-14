@@ -9,18 +9,18 @@ function photographerBannerFactory(data) {
         // Profil card
         let divHtml = `
             <div id="photograph-description">
-                <header>
+                <header role="Header">
                     <h1>${name}</h1>
                 </header>
-                <div class="description">
+                <div class="description" role="Text">
                     <p class="location">${city}, ${country}</p>
                     <p class="citation">${tagline}</p>
                 </div>
             </div>
-            <div id="button">
+            <div id="button" role="Button">
                 <button class="contact_button" onclick="displayModal()" alt="Contact Me" aria-label="Contactez moi">Contactez-moi</button>
             </div>
-            <div class="profil-photographers">
+            <div class="profil-photographers" role="Image">
                 <img src="${pictureBanner}" alt="${alttext}" aria-label="Photo de profil" />
             </div>          
             `;

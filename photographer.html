@@ -19,7 +19,7 @@
 
   <body>
     <header>
-      <a href="./index.html">
+      <a href="./index.html" role="Image link">
         <img
           src="assets/images/logo.png"
           class="logo"
@@ -34,9 +34,9 @@
       <div class="photograph-header"></div>
 
       <!-- DROPDOWN -->
-      <div class="liste">
+      <div class="liste" role="Input label">
         <p>Trier par</p>
-        <div class="menu">
+        <div class="menu" role="Select menu">
           <div class="menu-item popularity" role="button" tabindex="0">
             <p>Popularité</p>
             <span>
@@ -52,11 +52,11 @@
       </div>
 
       <!-- PHOTOGRAPH MEDIA -->
-      <section class="media"></section>
+      <section class="media" role="Image link"></section>
     </main>
 
     <!-- PRICE BANNER -->
-    <div class="price-banner">
+    <div class="price-banner" role="Text">
       <div id="like"></div>
       <div id="price"></div>
     </div>
@@ -64,25 +64,30 @@
     <!-- LIGHTBOX -->
     <div id="body-container">
       <div class="wrapper">
-        <div class="preview-box" tabindex="0" aria-label="image closeup view">
+        <div
+          class="preview-box"
+          tabindex="0"
+          role="Dialog"
+          aria-label="image closeup view"
+        >
           <div class="img-box">
-            <div class="slide prev" alt="Previous image">
+            <div class="slide prev" alt="Previous image" role="Link">
               <i class="fas fa-angle-left"></i>
             </div>
-            <div class="slide next" alt="Next image">
+            <div class="slide next" alt="Next image" role="Link">
               <i class="fas fa-angle-right"></i>
             </div>
             <div class="img-lightbox">
-              <div class="picture"></div>
+              <div class="picture" role="Image"></div>
               <span
                 class="icon fas fa-times"
-                role="button"
+                role="Button"
                 alt="Close dialog"
                 aria-label="Close dialog"
               >
               </span>
               <div class="details">
-                <span class="title"></span>
+                <span class="title" role="text"></span>
               </div>
             </div>
           </div>
@@ -95,18 +100,20 @@
     <div
       id="contact_modal"
       aria-hidden="true"
-      role="dialog"
+      role="Dialog"
       tabindex="-1"
       aria-label="Contact me"
     >
       <div class="modal">
         <header>
-          <div id="header-form">
+          <div id="header-form" role="Heading">
             <h1>Contactez-moi</h1>
             <h1 id="modal-profil"></h1>
           </div>
           <button
+            alt="Close Contact form"
             aria-label="Close Contact form"
+            role="Button"
             id="close"
             onclick="closeModal()"
             tabindex="6"
@@ -127,12 +134,13 @@
           novalidate
         >
           <div>
-            <label for="first">Prénom</label>
+            <label for="first" role="Label">Prénom</label>
             <input
               class="text-control"
               type="text"
               id="first"
               name="First name"
+              role="Text field"
               alt="First name"
               aria-label="First name"
               minlength="2"
@@ -141,12 +149,13 @@
             />
             <small></small>
 
-            <label for="last">Nom</label>
+            <label for="last" role="Label">Nom</label>
             <input
               class="text-control"
               type="text"
               id="last"
               name="Last name"
+              role="Text field"
               alt="Last name"
               aria-label="Last name"
               minlength="2"
@@ -155,12 +164,13 @@
             />
             <small></small>
 
-            <label for="email">Email</label>
+            <label for="email" role="Label">Email</label>
             <input
               class="text-control"
               type="email"
               id="email"
               name="Email"
+              role="Text field"
               alt="Email"
               aria-label="Email"
               tabindex="3"
@@ -168,9 +178,10 @@
             />
             <small></small>
 
-            <label for="message">Votre message</label>
+            <label for="message" role="Label">Votre message</label>
             <textarea
               name="Your message"
+              role="Text field"
               type="message"
               id="message"
               alt="Message"
@@ -187,6 +198,7 @@
             type="submit"
             class="contact_button"
             name="Send"
+            role="Button"
             alt="Send"
             aria-label="Send"
             tabindex="5"

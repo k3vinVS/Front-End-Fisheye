@@ -8,13 +8,13 @@ function photographerFactory(data) {
         // Profil photographer card
         let articleHtml = `
         <article>
-        <a href="photographer.html?id=${id}&name=${name}" class="profil">
+        <a href="photographer.html?id=${id}&name=${name}" class="profil" role="Link + image">
         <img src="${picture}" alt="${alttext}"/>
             <h2>${name}</h2>
         </a>
-        <p id="location">${city}, ${country}</p>
-        <p id="tagline">${tagline}</p>
-        <p id="price">${price}€/jour</p>
+        <p id="location" role="Text paragraph">${city}, ${country}</p>
+        <p id="tagline" role="Text paragraph">${tagline}</p>
+        <p id="price" role="Text paragraph">${price}€/jour</p>
         </article>
         `;
         return articleHtml;
