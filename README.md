@@ -1,6 +1,4 @@
-# Base de code du projet P6 - Parcours Front-end
+Lien vers le site web:
 
-## Démarrer le projet
-
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+https://k3vinvs.github.io/Front-End-Fisheye/
 
